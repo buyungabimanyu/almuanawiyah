@@ -1,0 +1,5 @@
+(function($) {
+
+    feather.replace()
+	
+})(jQuery);
