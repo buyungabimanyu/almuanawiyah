@@ -72,14 +72,14 @@
   trix-toolbar [data-trix-button-group="file-tools"]{
     display: none;
   }
-</style>		<!-- Font Awesome Icon -->
-<link rel="stylesheet" href="{{ asset('css') }}/font-awesome.min.css">
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ asset('css') }}/dashboard.css">
     
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('js') }}/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js') }}/jquery.min.js"></script>
   
   </head>
   <body>

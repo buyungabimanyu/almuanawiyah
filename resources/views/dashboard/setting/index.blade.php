@@ -132,9 +132,9 @@
                 <td>
                     <span class="avatar avatar-sm rounded-circle">
                     @if ($footer->icon)
-                        <img src="{{ asset('/storage/' . $footer->icon) }}" alt="" style="max-width: 80px; border-radiu: 100px">
-                    @else                
-                        <img src="{{asset('img/apple-icon.png')}}" alt="" style="max-width: 80px; border-radiu: 100px">
+                        <i class="fa-brands {{ $footer->icon }}"></i>
+                    @else
+                        <i class="fa-brands fa-usb"></i>
                     @endif
                     </span>
                 </td>
@@ -226,7 +226,7 @@
           </div>
           <div class="mb-3">
             <label for="name" class="form-label">Footer Link</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name') }}" min="7">
             @error('name')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -247,6 +247,61 @@
 <script>
 $(document).ready(function(){
   $("#create").modal('show');
+});
+</script>
+
+@endif
+
+@if (isset($editFooter))    
+<!-- Modal -->
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Footer</h5>
+        <button type="button" class="btn-close" onclick="history.back()"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form method="POST" action="{{ route('footer.update', $editFooter->id) }}" enctype="multipart/form-data">
+        @method('PUT')
+          @csrf
+          <div class="form-floating mb-3">
+            <select class="form-select" id="footer-icon" name="icon">
+                @foreach ($icons as $data)
+                    @if (old('icon') == $data->icon || $editFooter->icon == $data->icon)
+                        <option value="{{ $data->icon }}" selected><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
+                    @else
+                        <option value="{{ $data->icon }}"><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
+                    @endif
+                @endforeach
+            </select>
+            <label for="footer-icon">Footer Icon</label>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Footer Link</label>
+            <input type="hidden" name="oldName" value="{{ $editFooter->body }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name', $editFooter->body) }}" min="7">
+            @error('name')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+            @enderror
+          </div>        
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="history.back()">Close</button>
+          <button type="submit" class="btn btn-primary">Save Footer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#edit").modal('show');
 });
 </script>
 

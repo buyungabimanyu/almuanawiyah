@@ -37,4 +37,8 @@ class Setting extends Model
             return 'main/almuanawiyah.jpg';
         }
     }
+
+    public function footer(){
+        return self::where('parent_id', 2)->get();
+    }
 }
