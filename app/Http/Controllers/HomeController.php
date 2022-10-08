@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Category, Post, User, Views};
+use App\Models\{Category, Courses, Post, User, Views};
 
 class HomeController extends Controller
 {
@@ -10,7 +10,8 @@ class HomeController extends Controller
     {
         return view('homeviews.home', [
             'title' => 'Home',
-            'active' => 'Home'
+            'active' => 'Home',
+            'courses' => Courses::all()
         ]);
     }
 

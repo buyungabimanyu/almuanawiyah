@@ -51,7 +51,7 @@ class ViewsController extends Controller
             $validatedData['image'] = $request->file('image')->store('main');
         } else {
             $validatedData['image'] = $views->image;
-        }        
+        }     
 
         $validatedData['parent_id'] = 1;
         $validatedData['children_id'] = 1;
@@ -115,7 +115,7 @@ class ViewsController extends Controller
             $dataTitle['parent_id'] = $parent_id;
             $dataTitle['children_id'] = 1;
             
-            Views::where('parent_id', 2)->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::where('parent_id', $dataTitle['parent_id'])->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
             Views::create($dataTitle);
         }
         
@@ -124,7 +124,7 @@ class ViewsController extends Controller
             $dataBody['parent_id'] = $parent_id;
             $dataBody['children_id'] = 2;
             
-            Views::where('parent_id', 2)->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::where('parent_id', $dataBody['parent_id'])->where('children_id', $dataBody['children_id'])->update(['active' => false]);
             Views::create($dataBody);
         }
 
@@ -217,22 +217,373 @@ class ViewsController extends Controller
     public function CoursesView()
     {
         return view('dashboard.views.courses', [
-            'title' => 'Views Courses'
-        ]);
-    }
-    
-    public function ContactView()
-    {
-        return view('dashboard.views.contact', [
-            'title' => 'Views Contact'
+            'title' => 'Views Courses',
+            'coursesTitle' => Views::select('body')->where('parent_id', 4)->where('children_id', 1)->where('active', true)->first(),
+            'coursesBody' => Views::select('body')->where('parent_id', 4)->where('children_id', 2)->where('active', true)->first(),
         ]);
     }
 
-    public function FooterView()
+    public function CoursesStore(Request $request)
     {
-        return view('dashboard.views.footer', [
-            'title' => 'Views Footer'
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255'
         ]);
+
+        $parent_id = 4; 
+
+        if($validatedData['title']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+    
+            Views::create($dataTitle);
+        }
+
+        if($validatedData['body']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+
+
+        return redirect('/views/courses')->with('success', 'Courses View Berasil diUbah!');
+    }
+
+    public function CoursesUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255'
+        ]);
+
+        
+        $parent_id = 4; 
+
+        if($validatedData['title'] !== $request['oldTitle']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+            
+            Views::where('parent_id', $dataTitle['parent_id'])->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::create($dataTitle);
+        }
+        
+        if($validatedData['body'] !== $request['oldBody']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+            
+            Views::where('parent_id', $dataBody['parent_id'])->where('children_id', $dataBody['children_id'])->update(['active' => false]);
+            Views::create($dataBody);
+        }
+
+        return redirect('/views/courses')->with('success', 'Courses View Berasil diUbah!');
+    }
+    
+    public function WhyView()
+    {
+        return view('dashboard.views.why', [
+            'title' => 'Views Footer',
+            'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
+            'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
+        ]);
+    }
+    
+    public function WhyStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255'
+        ]);
+
+        $parent_id = 5; 
+
+        if($validatedData['title']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+    
+            Views::create($dataTitle);
+        }
+
+        if($validatedData['body']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+
+
+        return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+    }
+
+    public function WhyUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255'
+        ]);
+
+        
+        $parent_id = 5; 
+
+        if($validatedData['title'] !== $request['oldTitle']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+            
+            Views::where('parent_id', $dataTitle['parent_id'])->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::create($dataTitle);
+        }
+        
+        if($validatedData['body'] !== $request['oldBody']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+            
+            Views::where('parent_id', $dataBody['parent_id'])->where('children_id', $dataBody['children_id'])->update(['active' => false]);
+            Views::create($dataBody);
+        }
+
+        return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+    }
+    
+    public function VideoView()
+    {
+        return view('dashboard.views.video', [
+            'title' => 'Views Footer',
+            'videoTitle' => Views::select('body')->where('parent_id', 6)->where('children_id', 1)->where('active', true)->first(),
+            'videoBody' => Views::select('body')->where('parent_id', 6)->where('children_id', 2)->where('active', true)->first(),
+            'videoText' => Views::select('body')->where('parent_id', 6)->where('children_id', 3)->where('active', true)->first(),
+            'videoPlay' => Views::select('body')->where('parent_id', 6)->where('children_id', 4)->where('active', true)->first()
+        ]);
+    }
+    
+    public function videoStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'text' => 'nullable|max:255',
+            'link' => 'nullable|min:7'
+        ]);
+
+        $parent_id = 6; 
+
+        if($validatedData['title']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+    
+            Views::create($dataTitle);
+        }
+
+        if($validatedData['body']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+
+        if($validatedData['text']){
+            $dataText['body'] = $validatedData['text'];
+            $dataText['parent_id'] = $parent_id;
+            $dataText['children_id'] = 3;
+    
+            Views::create($dataText);
+        }
+
+        if($validatedData['link']){
+            $dataLink['body'] = $validatedData['link'];
+            $dataLink['parent_id'] = $parent_id;
+            $dataLink['children_id'] = 4;
+    
+            Views::create($dataLink);
+        }
+
+
+        return redirect('/views/video')->with('success', 'Video View Berasil diUbah!');
+    }
+
+    public function videoUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'text' => 'nullable|max:255',
+            'link' => 'nullable|min:7'
+        ]);
+
+        
+        $parent_id = 6; 
+
+        if($validatedData['title'] !== $request['oldTitle']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+            
+            Views::where('parent_id', $dataTitle['parent_id'])->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::create($dataTitle);
+        }
+        
+        if($validatedData['body'] !== $request['oldBody']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+            
+            Views::where('parent_id', $dataBody['parent_id'])->where('children_id', $dataBody['children_id'])->update(['active' => false]);
+            Views::create($dataBody);
+        }
+
+        if($validatedData['text'] !== $request['oldText']){
+            $dataText['body'] = $validatedData['text'];
+            $dataText['parent_id'] = $parent_id;
+            $dataText['children_id'] = 3;
+            
+            Views::where('parent_id', $dataText['parent_id'])->where('children_id', $dataText['children_id'])->update(['active' => false]);
+            Views::create($dataText);
+        }
+        
+        if($validatedData['link'] !== $request['oldLink']){
+            $dataLink['body'] = $validatedData['link'];
+            $dataLink['parent_id'] = $parent_id;
+            $dataLink['children_id'] = 4;
+            
+            Views::where('parent_id', $dataLink['parent_id'])->where('children_id', $dataLink['children_id'])->update(['active' => false]);
+            Views::create($dataLink);
+        }
+
+        return redirect('/views/video')->with('success', 'Video View Berasil diUbah!');
+    }
+
+    public function ContactView()
+    {
+        return view('dashboard.views.contact', [
+            'title' => 'Views Contact',
+            'contactTitle' => Views::select('body')->where('parent_id', 7)->where('children_id', 1)->where('active', true)->first(),
+            'body' => Views::select('body')->where('parent_id', 7)->where('children_id', 2)->where('active', true)->first(),
+            'email' => Views::select('body')->where('parent_id', 7)->where('children_id', 3)->where('active', true)->first(),
+            'phone' => Views::select('body')->where('parent_id', 7)->where('children_id', 4)->where('active', true)->first(),
+            'address' => Views::select('body')->where('parent_id', 7)->where('children_id', 5)->where('active', true)->first()
+        ]);
+    }
+        
+    public function ContactStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|min:10',
+            'address' => 'required|min:5|max:255'
+        ]);
+
+        $parent_id = 7; 
+
+        if($validatedData['title']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+    
+            Views::create($dataTitle);
+        }
+
+        if($validatedData['body'] !== ''){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+
+        if($validatedData['email']){
+            $dataEmail['body'] = $validatedData['email'];
+            $dataEmail['parent_id'] = $parent_id;
+            $dataEmail['children_id'] = 3;
+    
+            Views::create($dataEmail);
+        }
+
+
+
+        if($validatedData['phone']){
+            $dataPhone['body'] = $validatedData['phone'];
+            $dataPhone['parent_id'] = $parent_id;
+            $dataPhone['children_id'] = 4;
+    
+            Views::create($dataPhone);
+        }
+
+        if($validatedData['address']){
+            $dataAddress['body'] = $validatedData['address'];
+            $dataAddress['parent_id'] = $parent_id;
+            $dataAddress['children_id'] = 5;
+    
+            Views::create($dataAddress);
+        }
+
+
+        return redirect('/views/contact')->with('success', 'Contact View Berasil diUbah!');
+    }
+
+    public function ContactUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|min:10',
+            'address' => 'required|min:5|max:255'
+        ]);
+
+        
+        $parent_id = 7; 
+
+        if($validatedData['title'] !== $request['oldTitle']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+            
+            Views::where('parent_id', $dataTitle['parent_id'])->where('children_id', $dataTitle['children_id'])->update(['active' => false]);
+            Views::create($dataTitle);
+        }
+        
+        if($validatedData['body'] !== $request['oldBody']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+            
+            Views::where('parent_id', $dataBody['parent_id'])->where('children_id', $dataBody['children_id'])->update(['active' => false]);
+            Views::create($dataBody);
+        }
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            };
+            $dataImage['image'] = $request->file('image')->store('main');
+            $dataImage['parent_id'] = $parent_id;
+            $dataImage['children_id'] = 3;
+            
+            Views::where('parent_id', $dataImage['parent_id'])->where('children_id', $dataImage['children_id'])->update(['active' => false]);
+            Views::create($dataImage);
+        }
+        
+        if($validatedData['phone'] !== $request['oldPhone']){
+            $dataPhone['body'] = $validatedData['phone'];
+            $dataPhone['parent_id'] = $parent_id;
+            $dataPhone['children_id'] = 4;
+            
+            Views::where('parent_id', $dataPhone['parent_id'])->where('children_id', $dataPhone['children_id'])->update(['active' => false]);
+            Views::create($dataPhone);
+        }
+
+        return redirect('/views/contact')->with('success', 'Contact View Berasil diUbah!');
     }
 
     public function BlogView()

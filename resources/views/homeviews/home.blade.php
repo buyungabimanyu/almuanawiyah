@@ -94,8 +94,8 @@
 				<!-- row -->
 				<div class="row">
 					<div class="section-header text-center">
-						<h2>Explore Courses</h2>
-						<p class="lead">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
+						<h2>{{ App\Models\Views::coursesTitle() }}</h2>
+						<p class="lead">{{ App\Models\Views::coursesBody() }}</p>
 					</div>
 				</div>
 				<!-- /row -->
@@ -106,139 +106,158 @@
 					<!-- row -->
 					<div class="row">
 
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course01.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
-								<div class="course-details">
-									<span class="course-category">Business</span>
-									<span class="course-price course-free">Free</span>
+						@if ($courses->count())
+							@foreach ($courses as $item)
+								<!-- single course -->
+								<div class="col-md-3 col-sm-6 col-xs-6">
+									<div class="course">
+										<div class="course-img">
+											@if ($item->image)
+												<img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
+											@else
+												<img src="./img/course01.jpg" alt="{{ $item->title }}">
+											@endif
+											<i class="course-link-icon fa fa-link"></i>
+										</div>
+										<div class="course-title">
+											{{ $item->title }}
+										</div>
+										<div class="course-details">
+											<span class="course-category">{{ $item->category->name }}</span>
+										</div>
+									</div>
+								</div>
+								<!-- /single course -->
+							@endforeach
+						@else							
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course01.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
+									<div class="course-details">
+										<span class="course-category">Business</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
+							<!-- /single course -->
 
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course02.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">Introduction to CSS </a>
-								<div class="course-details">
-									<span class="course-category">Web Design</span>
-									<span class="course-price course-premium">Premium</span>
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course02.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">Introduction to CSS </a>
+									<div class="course-details">
+										<span class="course-category">Web Design</span>
+										<span class="course-price course-premium">Premium</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
+							<!-- /single course -->
 
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course03.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">The Ultimate Drawing Course | From Beginner To Advanced</a>
-								<div class="course-details">
-									<span class="course-category">Drawing</span>
-									<span class="course-price course-premium">Premium</span>
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course03.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">The Ultimate Drawing Course | From Beginner To Advanced</a>
+									<div class="course-details">
+										<span class="course-category">Drawing</span>
+										<span class="course-price course-premium">Premium</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
+							<!-- /single course -->
 
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course04.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">The Complete Web Development Course</a>
-								<div class="course-details">
-									<span class="course-category">Web Development</span>
-									<span class="course-price course-free">Free</span>
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course04.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">The Complete Web Development Course</a>
+									<div class="course-details">
+										<span class="course-category">Web Development</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
+							<!-- /single course -->
 
-					</div>
-					<!-- /row -->
-
-					<!-- row -->
-					<div class="row">
-
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course05.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
-								<div class="course-details">
-									<span class="course-category">Web Development</span>
-									<span class="course-price course-free">Free</span>
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course05.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
+									<div class="course-details">
+										<span class="course-category">Web Development</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
-
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course06.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">All You Need To Know About Web Design</a>
-								<div class="course-details">
-									<span class="course-category">Web Design</span>
-									<span class="course-price course-free">Free</span>
+							<!-- /single course -->
+		
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course06.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">All You Need To Know About Web Design</a>
+									<div class="course-details">
+										<span class="course-category">Web Design</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
-
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course07.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">How to Get Started in Photography</a>
-								<div class="course-details">
-									<span class="course-category">Photography</span>
-									<span class="course-price course-free">Free</span>
+							<!-- /single course -->
+		
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course07.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">How to Get Started in Photography</a>
+									<div class="course-details">
+										<span class="course-category">Photography</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
-
-
-						<!-- single course -->
-						<div class="col-md-3 col-sm-6 col-xs-6">
-							<div class="course">
-								<a href="#" class="course-img">
-									<img src="./img/course08.jpg" alt="">
-									<i class="course-link-icon fa fa-link"></i>
-								</a>
-								<a class="course-title" href="#">Typography From A to Z</a>
-								<div class="course-details">
-									<span class="course-category">Typography</span>
-									<span class="course-price course-free">Free</span>
+							<!-- /single course -->
+		
+		
+							<!-- single course -->
+							<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="course">
+									<a href="#" class="course-img">
+										<img src="./img/course08.jpg" alt="">
+										<i class="course-link-icon fa fa-link"></i>
+									</a>
+									<a class="course-title" href="#">Typography From A to Z</a>
+									<div class="course-details">
+										<span class="course-category">Typography</span>
+										<span class="course-price course-free">Free</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /single course -->
+							<!-- /single course -->
+						@endif
 
 					</div>
 					<!-- /row -->
@@ -246,19 +265,13 @@
 				</div>
 				<!-- /courses -->
 
-				<div class="row">
-					<div class="center-btn">
-						<a class="main-button icon-button" href="#">More Courses</a>
-					</div>
-				</div>
-
 			</div>
 			<!-- container -->
 
 		</div>
 		<!-- /Courses -->
 
-		<!-- Call To Action -->
+		{{-- <!-- Call To Action -->
 		<div id="cta" class="section">
 
 			<!-- Backgound Image -->
@@ -284,7 +297,7 @@
 			<!-- /container -->
 
 		</div>
-		<!-- /Call To Action -->
+		<!-- /Call To Action --> --}}
 
 		<!-- Why us -->
 		<div id="why-us" class="section">
@@ -295,8 +308,8 @@
 				<!-- row -->
 				<div class="row">
 					<div class="section-header text-center">
-						<h2>Why Edusite</h2>
-						<p class="lead">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
+						<h2>{{ App\Models\Views::whyTitle() }}</h2>
+						<p class="lead">{{ App\Models\Views::whyBody() }}</p>
 					</div>
 
 					<!-- feature -->
@@ -344,16 +357,13 @@
 				<div class="row">
 
 					<div class="col-md-6">
-						<h3>Persius imperdiet incorrupte et qui, munere nusquam et nec.</h3>
-						<p class="lead">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
-						<p>No vel facete sententiae, quodsi dolores no quo, pri ex tamquam interesset necessitatibus. Te denique cotidieque delicatissimi sed. Eu doming epicurei duo. Sit ea perfecto deseruisse theophrastus. At sed malis hendrerit, elitr deseruisse in sit, sit ei facilisi mediocrem.</p>
+						<h3>{{ App\Models\Views::videoTitle() }}</h3>
+						<p class="lead">{{ App\Models\Views::videoBody() }}</p>
+						<p>{!! App\Models\Views::videoText() !!}</p>
 					</div>
 
 					<div class="col-md-5 col-md-offset-1">
-						<a class="about-video" href="#">
-							<img src="./img/about-video.jpg" alt="">
-							<i class="play-icon fa fa-play"></i>
-						</a>
+						<iframe class="about-video" allowfullscreen="1" width="100%" height="300" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" src="{{ App\Models\Views::videoPlay() }}" width="640" height="360" frameborder="0"></iframe>
 					</div>
 
 				</div>
@@ -365,24 +375,53 @@
 		</div>
 		<!-- /Why us -->
 
-		<!-- Contact CTA -->
-		<div id="contact-cta" class="section">
 
-			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/cta2-background.jpg)"></div>
-			<!-- Backgound Image -->
+		<!-- Contact -->
+		<div id="contact" class="section">
 
 			<!-- container -->
 			<div class="container">
 
 				<!-- row -->
 				<div class="row">
-
-					<div class="col-md-8 col-md-offset-2 text-center">
-						<h2 class="white-text">Contact Us</h2>
-						<p class="lead white-text">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
-						<a class="main-button icon-button" href="#">Contact Us Now</a>
+					<div class="section-header text-center">
+						<h2>{{ App\Models\Views::contactTitle() }}</h2>
+						<p class="lead">{{ App\Models\Views::contactBody() }}</p>
 					</div>
+					<!-- contact form -->
+					<div class="col-md-6">
+						<div class="contact-form">
+							<h4>Send A Message</h4>
+							<form action="{{ route('contact.us.store') }}" method="POST">
+								@csrf
+								<input class="input" type="text" name="name" placeholder="Name">
+								<input class="input" type="email" name="email" placeholder="Email">
+								<input class="input" type="text" name="subject" placeholder="Subject">
+								<textarea class="input" name="message" placeholder="Enter your Message"></textarea>
+								<button type="submit" class="main-button icon-button pull-right">Send Message</button>
+							</form>
+						</div>
+					</div>
+					<!-- /contact form -->
+
+					<!-- contact information -->
+					<div class="col-md-5 col-md-offset-1">
+						<h4>Contact Information</h4>
+						<ul class="contact-details">
+							<li><i class="fa fa-envelope"></i>{{ App\Models\Views::contactEmail() }}</li>
+							<li>
+								<a href="http://wa.me/{{ App\Models\Views::contactPhone() }}" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-phone"></i>{{ App\Models\Views::contactPhone() }}</li>
+								</a>
+							<li><i class="fa fa-map-marker"></i>{{ App\Models\Views::contactAddress() }}</li>
+						</ul>
+
+						<!-- contact map -->
+						<div id="contact-map"></div>
+						<!-- /contact map -->
+
+					</div>
+					<!-- contact information -->
 
 				</div>
 				<!-- /row -->
@@ -391,6 +430,6 @@
 			<!-- /container -->
 
 		</div>
-		<!-- /Contact CTA -->
+		<!-- /Contact -->
 
 @endsection

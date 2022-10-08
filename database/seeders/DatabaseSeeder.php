@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User, Category, Post, Setting};
+use App\Models\{User, Category, Courses, Post, Setting};
 
 class DatabaseSeeder extends Seeder
 {
@@ -102,5 +102,7 @@ class DatabaseSeeder extends Seeder
         foreach($data as $input){
             Setting::create($input);
         }
+
+        Courses::factory(4)->create();
     }
 }

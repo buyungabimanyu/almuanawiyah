@@ -58,6 +58,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link {{ Request::is('courses*') ? 'active' : '' }}" aria-current="page" href="{{ route('courses.index') }}">
+              <span data-feather="archive" class="align-text-bottom"></span>
+              Courses List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('contactus*') ? 'active' : '' }}" aria-current="page" href="{{ route('contactus') }}">
+              <span data-feather="archive" class="align-text-bottom"></span>
+              Email Sender
+            </a>
+          </li>
+          <li class="nav-item">
             <details>
               <summary class="nav-link {{ Request::is('views*') ? 'active' : '' }}"><span data-feather="layout" class="align-text-bottom"></span> Views</summary>
               <ul class="nav nav-pills flex-column">
@@ -98,9 +110,15 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('contactview') }}">
+                  <a class="nav-link" aria-current="page" href="{{ route('whyview') }}">
                     <span data-feather="airplay" class="align-text-bottom"></span>
-                    Footer View
+                    Why View
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{{ route('videoview') }}">
+                    <span data-feather="airplay" class="align-text-bottom"></span>
+                    Video View
                   </a>
                 </li>
                 <li class="nav-item">

@@ -485,33 +485,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	overflow: hidden;
 }
 
-.about-video > img {
+.about-video > iframe {
 	width:100%;
-}
-
-.about-video .play-icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50% , -50%);
-	    -ms-transform: translate(-50% , -50%);
-	        transform: translate(-50% , -50%);
-	width: 80px;
-	height: 80px;
-	line-height: 80px;
-	text-align: center;
-	background: #fff;
-	border-radius: 50%;
-	font-size: 24.027px;
-	z-index:10;
-	-webkit-animation : 2s play-animation infinite;
-	        animation : 2s play-animation infinite;
-	-webkit-transition:0.2s color;
-	transition:0.2s color;
-}
-
-.about-video:hover .play-icon {
-	color:#FF6700;
+	height: auto;
+	min-height: 400px;
 }
 
 @-webkit-keyframes play-animation {

@@ -17,6 +17,11 @@ class Category extends Model
         return $this->hasMany( Post::class, 'category_id', 'id');
     }
 
+    public function courses()
+    {
+        return $this->hasMany( Courses::class, 'category_id', 'id' );
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
