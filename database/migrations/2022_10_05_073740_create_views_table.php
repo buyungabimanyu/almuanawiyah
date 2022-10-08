@@ -17,6 +17,7 @@ class CreateViewsTable extends Migration
             $table->id();
             $table->foreignId('parent_id');
             $table->foreignId('children_id');
+            $table->string('title')->nullable();
             $table->string('body')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

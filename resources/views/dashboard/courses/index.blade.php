@@ -160,9 +160,11 @@
         <div class="modal-body">
           
           <form method="POST" action="{{ route('courses.update', $edit->id) }}" enctype="multipart/form-data">
+            @method('put')
             @csrf
             <div class="mb-3">
               <label for="title" class="form-label">Courses title</label>
+              <input type="hidden" name="oldTitle" value="{{ $edit->title }}">
               <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title', $edit->title) }}">
               @error('title')
                   <div class="invalid-feedback">

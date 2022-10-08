@@ -11,7 +11,8 @@ class HomeController extends Controller
         return view('homeviews.home', [
             'title' => 'Home',
             'active' => 'Home',
-            'courses' => Courses::all()
+            'courses' => Courses::all(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
         ]);
     }
 

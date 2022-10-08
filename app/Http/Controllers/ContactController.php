@@ -27,7 +27,7 @@ class ContactController extends Controller
 
         Contact::create($request->all());
 
-        return redirect('/')->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
+        return redirect('/#contact')->with(['success' => 'Terimakasih atas pesan yang telah anda kirimkan!!!']);
     }
 
 }

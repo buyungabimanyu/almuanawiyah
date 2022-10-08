@@ -289,6 +289,7 @@ class ViewsController extends Controller
             'title' => 'Views Footer',
             'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
         ]);
     }
     
@@ -350,6 +351,89 @@ class ViewsController extends Controller
         }
 
         return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+    }
+
+    public function alasanCreate()
+    {
+        return view('dashboard.views.why', [
+            'title' => 'Views Footer',
+            'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
+            'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
+            'create' => '',
+            'icons' => Views::select('image')->where('parent_id', 5)->where('children_id', 9)->where('active', true)->get()
+        ]);
+    }
+
+    public function alasanStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'required|min:5|max:255',
+            'icon' => 'required' 
+        ]);
+        $data = [];
+        $data['title'] = $validatedData['title'];
+        $data['body'] = $validatedData['body'];
+        $data['image'] = $validatedData['icon'];
+        $data['parent_id'] = 5;
+        $data['children_id'] = 3;
+        
+        Views::create($data);
+
+        return redirect('/views/why')->with('success', 'Alasan Berasil ditambahkan!!!');
+    }
+
+    public function alasanEdit(Views $views)
+    {
+        return view('dashboard.views.why', [
+            'title' => 'Views Footer',
+            'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
+            'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
+            'edit' => $views,
+            'icons' => Views::select('image')->where('parent_id', 5)->where('children_id', 9)->where('active', true)->get()
+        ]);
+    }
+
+    public function alasanUpdate(Request $request, Views $views)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'required|min:5|max:255',
+            'icon' => 'required' 
+        ]);
+
+        $data = [];
+
+        if($validatedData['title'] == $request->oldTitle){
+            $data['title'] = $views->title;
+        } else {
+            $data['title'] = $validatedData['title'];
+        }
+
+        if($validatedData['body'] == $request->oldBody){
+            $data['body'] = $views->body;
+        } else {
+            $data['body'] = $validatedData['body'];
+        }
+
+        if($validatedData['icon'] == $request->oldIcon){
+            $data['image'] = $views->title;
+        } else {
+            $data['image'] = $validatedData['icon'];
+        }
+
+        $views->update($data);
+
+        return redirect('/views/why')->with('success', 'Alasan Berasil diubah!!!');
+    }
+    
+    public function alasanDestroy(Views $views)
+    {
+        $views->delete();
+
+        return redirect('/views/why')->with('success', 'Alasan Berasil dihapus!!!');
     }
     
     public function VideoView()

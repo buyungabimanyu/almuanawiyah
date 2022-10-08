@@ -88,6 +88,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::put('/courses/{courses}/update', ['as' => 'courses.update', 'uses' => 'CoursesController@update']);
 		Route::delete('/courses/{courses}', ['as' => 'courses.destroy', 'uses' => 'CoursesController@destroy']);
 
+		Route::get('/views/why/alasan/create', ['as' => 'alasan.create', 'uses' => 'ViewsController@alasanCreate']);
+		Route::post('/views/why/alasan', ['as' => 'alasan.store', 'uses' => 'ViewsController@alasanStore']);
+		Route::get('/views/why/alasan/{views}/edit', ['as' => 'alasan.edit', 'uses' => 'ViewsController@alasanEdit']);
+		Route::put('/views/why/alasan/{views}/update', ['as' => 'alasan.update', 'uses' => 'ViewsController@alasanUpdate']);
+		Route::delete('/views/why/alasan/{views}', ['as' => 'alasan.destroy', 'uses' => 'ViewsController@alasanDestroy']);
+
 	});
 
 	Route::get('/checkSlug', ['as' => 'checkslug', 'uses' => 'CheckslugController']);

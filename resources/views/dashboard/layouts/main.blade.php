@@ -73,8 +73,9 @@
     display: none;
   }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css">
-    <!-- Custom styles for this template -->
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{{ asset('css') }}/font-awesome.min.css">
+   <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ asset('css') }}/dashboard.css">
     
     <!-- JQuery -->

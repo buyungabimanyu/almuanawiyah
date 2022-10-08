@@ -39,36 +39,49 @@
 							<p class="lead">{{ App\Models\Views::aboutBody() }}</p>
 						</div>
 
-						<!-- feature -->
-						<div class="feature">
-							<i class="feature-icon fa fa-flask"></i>
-							<div class="feature-content">
-								<h4>Online Courses </h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+						@if ($alasan->count())
+							@foreach ($alasan as $item)								
+								<!-- feature -->
+								<div class="feature">
+									<i class="feature-icon fa {!! ($item->image) ? $item->image : 'fa-hashtag' !!}"></i>
+									<div class="feature-content">
+										<h4>{{ $item->title }}</h4>
+										<p>{{ $item->body }}</p>
+									</div>
+								</div>
+								<!-- /feature -->
+							@endforeach
+						@else
+							<!-- feature -->
+							<div class="feature">
+								<i class="feature-icon fa fa-flask"></i>
+								<div class="feature-content">
+									<h4>Online Courses </h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
-						</div>
-						<!-- /feature -->
-
-						<!-- feature -->
-						<div class="feature">
-							<i class="feature-icon fa fa-users"></i>
-							<div class="feature-content">
-								<h4>Expert Teachers</h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+							<!-- /feature -->
+	
+							<!-- feature -->
+							<div class="feature">
+								<i class="feature-icon fa fa-users"></i>
+								<div class="feature-content">
+									<h4>Expert Teachers</h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
-						</div>
-						<!-- /feature -->
-
-						<!-- feature -->
-						<div class="feature">
-							<i class="feature-icon fa fa-comments"></i>
-							<div class="feature-content">
-								<h4>Community</h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+							<!-- /feature -->
+	
+							<!-- feature -->
+							<div class="feature">
+								<i class="feature-icon fa fa-comments"></i>
+								<div class="feature-content">
+									<h4>Community</h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
-						</div>
-						<!-- /feature -->
-
+							<!-- /feature -->
+						@endif
 					</div>
 
 					<div class="col-md-6">
@@ -312,41 +325,58 @@
 						<p class="lead">{{ App\Models\Views::whyBody() }}</p>
 					</div>
 
-					<!-- feature -->
-					<div class="col-md-4">
-						<div class="feature">
-							<i class="feature-icon fa fa-flask"></i>
-							<div class="feature-content">
-								<h4>Online Courses</h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+					@if ($alasan->count())
+						@foreach ($alasan as $item)							
+							<!-- feature -->
+							<div class="col-md-4">
+								<div class="feature">
+									<i class="feature-icon {!! $item->image !!}"></i>
+									<div class="feature-content">
+										<h4>{{ $item->title }}</h4>
+										<p>{{ $item->body }}</p>
+									</div>
+								</div>
+							</div>
+							<!-- /feature -->
+						@endforeach
+					@else
+						<!-- feature -->
+						<div class="col-md-4">
+							<div class="feature">
+								<i class="feature-icon fa fa-flask"></i>
+								<div class="feature-content">
+									<h4>Online Courses</h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- /feature -->
+						<!-- /feature -->
 
-					<!-- feature -->
-					<div class="col-md-4">
-						<div class="feature">
-							<i class="feature-icon fa fa-users"></i>
-							<div class="feature-content">
-								<h4>Expert Teachers</h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+						<!-- feature -->
+						<div class="col-md-4">
+							<div class="feature">
+								<i class="feature-icon fa fa-users"></i>
+								<div class="feature-content">
+									<h4>Expert Teachers</h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- /feature -->
+						<!-- /feature -->
 
-					<!-- feature -->
-					<div class="col-md-4">
-						<div class="feature">
-							<i class="feature-icon fa fa-comments"></i>
-							<div class="feature-content">
-								<h4>Community</h4>
-								<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+						<!-- feature -->
+						<div class="col-md-4">
+							<div class="feature">
+								<i class="feature-icon fa fa-comments"></i>
+								<div class="feature-content">
+									<h4>Community</h4>
+									<p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- /feature -->
+						<!-- /feature -->
+					@endif
+
 
 				</div>
 				<!-- /row -->
@@ -392,6 +422,11 @@
 					<div class="col-md-6">
 						<div class="contact-form">
 							<h4>Send A Message</h4>
+							@if (session()->has('success'))
+								<div class="alert alert-success" role="alert">
+									{{ session('success') }}
+								</div>
+							@endif
 							<form action="{{ route('contact.us.store') }}" method="POST">
 								@csrf
 								<input class="input" type="text" name="name" placeholder="Name">
