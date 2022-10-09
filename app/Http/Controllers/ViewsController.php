@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FontAwesome;
 use App\Models\Views;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -361,7 +362,7 @@ class ViewsController extends Controller
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
             'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
             'create' => '',
-            'icons' => Views::select('image')->where('parent_id', 5)->where('children_id', 9)->where('active', true)->get()
+            'icons' => FontAwesome::all()
         ]);
     }
 
@@ -392,7 +393,7 @@ class ViewsController extends Controller
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
             'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
             'edit' => $views,
-            'icons' => Views::select('image')->where('parent_id', 5)->where('children_id', 9)->where('active', true)->get()
+            'icons' => FontAwesome::all()
         ]);
     }
 

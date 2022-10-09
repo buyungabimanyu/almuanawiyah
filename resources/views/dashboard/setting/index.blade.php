@@ -214,13 +214,13 @@
           @csrf
           <div class="form-floating mb-3">
             <select class="form-select" id="footer-icon" name="icon">
-                @foreach ($icons as $data)
-                    @if (old('icon') == $data->icon)
-                        <option value="{{ $data->icon }}" selected><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
-                    @else
-                        <option value="{{ $data->icon }}"><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
-                    @endif
-                @endforeach
+              @foreach ($icons as $icon)
+                @if (old('icon') == $icon->icon)
+                  <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});" selected>{{ $icon->body }}</option>
+                @else
+                  <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});">{{ $icon->body }}</option>
+                @endif
+              @endforeach
             </select>
             <label for="footer-icon">Footer Icon</label>
           </div>
@@ -268,13 +268,13 @@ $(document).ready(function(){
           @csrf
           <div class="form-floating mb-3">
             <select class="form-select" id="footer-icon" name="icon">
-                @foreach ($icons as $data)
-                    @if (old('icon') == $data->icon || $editFooter->icon == $data->icon)
-                        <option value="{{ $data->icon }}" selected><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
-                    @else
-                        <option value="{{ $data->icon }}"><i class="fa-brands {{ $data->icon }}"></i> {{ $data->body }}</option>
-                    @endif
-                @endforeach
+              @foreach ($icons as $icon)
+                @if (old('icon', $editFooter->icon) == $icon->icon)
+                  <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});" selected>{{ $icon->body }}</option>
+                @else
+                  <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});">{{ $icon->body }}</option>
+                @endif
+              @endforeach
             </select>
             <label for="footer-icon">Footer Icon</label>
           </div>

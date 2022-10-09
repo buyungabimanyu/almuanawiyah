@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User, Category, Courses, Post, Setting, Views};
+use App\Models\{User, Category, Courses, FontAwesome, Post, Setting, Views};
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,120 +43,118 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Post::factory(20)->create();
-
-        $data = [
-            [
-                'parent_id' => 9,
-                'icon' => 'fa-facebook',
-                'body' => 'Facebook'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-twitter',
-                'body' => 'Twitter'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-instagram',
-                'body' => 'Instagram'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-tiktok',
-                'body' => 'Tiktok'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-linkedin',
-                'body' => 'Linkedin'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-github',
-                'body' => 'GitHub'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-gitlab',
-                'body' => 'GitLab'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-discord',
-                'body' => 'Discord'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-youtube',
-                'body' => 'Youtube'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-google',
-                'body' => 'Google'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-google-plus',
-                'body' => 'Google+'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-whatsapp',
-                'body' => 'Whatsapp'
-            ],[
-                'parent_id' => 9,
-                'icon' => 'fa-telegram',
-                'body' => 'Telegram'
-            ]
-        ];
-        foreach($data as $input){
-            Setting::create($input);
-        }
-        
+   
         Courses::factory(4)->create();
 
         $dataicon = [
-        ['image' => 'fa-music'
-        ],['image' => 'fa-bell'
-        ],['image' => 'fa-atom-simple'
-        ],['image' => 'fa-thought-bubble'
-        ],['image' => 'fa-globe-stand'
-        ],['image' => 'fa-school'
-        ],['image' => 'fa-award'
-        ],['image' => 'fa-chalkboard'
-        ],['image' => 'fa-books'
-        ],['image' => 'fa-user-graduate'
-        ],['image' => 'fa-shapes'
-        ],['image' => 'fa-ruler-triangle'
-        ],['image' => 'fa-person-chalkboard'
-        ],['image' => 'fa-pen-paintbrush'
-        ],['image' => 'fa-microscope'
-        ],['image' => 'fa-masks-theater'
-        ],['image' => 'fa-laptop-file'
-        ],['image' => 'fa-laptop-code'
-        ],['image' => 'fa-graduation-cap'
-        ],['image' => 'fa-glasses-round'
-        ],['image' => 'fa-file-certificate'
-        ],['image' => 'fa-diploma'
-        ],['image' => 'fa-chalkboard-user'
-        ],['image' => 'fa-bus-school'
-        ],['image' => 'fa-book-open-reader'
-        ],['image' => 'fa-book-open-cover'
-        ],['image' => 'fa-book-open'
-        ],['image' => 'fa-book-copy'
-        ],['image' => 'fa-book-blank'
-        ],['image' => 'fa-bell-slash'
-        ],['image' => 'fa-bell-school-slash'
-        ],['image' => 'fa-bell-school'
-        ],['image' => 'fa-backpack'
-        ],['image' => 'fa-atom'
-        ],['image' => 'fa-apple-whole'
-        ],['image' => 'fa-school-lock'
-        ],['image' => 'fa-mosque'
-        ],['image' => 'fa-person-praying'
-        ],['image' => 'fa-book-quran'
-        ],['image' => 'fa-landmark'
-        ],['image' => 'fa-car-building'
-        ],['image' => 'fa-building'
-        ],['image' => 'fa-buildings'
-        ],['image' => 'fa-building-user'
-        ],['image' => 'fa-building-shield']
+            [
+                'icon' => 'fa-facebook',
+                'image' => 'icons/facebook.png',
+                'body' => 'Facebook'
+            ],[
+                'icon' => 'fa-twitter',
+                'image' => 'icons/twitter.png',
+                'body' => 'Twitter'
+            ],[
+                'icon' => 'fa-instagram',
+                'image' => 'icons/instagram.png',
+                'body' => 'Instagram'
+            ],[
+                'icon' => 'fa-tiktok',
+                'image' => 'icons/tik-tok.png',
+                'body' => 'Tiktok'
+            ],[
+                'icon' => 'fa-youtube',
+                'image' => 'icons/youtube.png',
+                'body' => 'Youtube'
+            ],[
+                'icon' => 'fa-google',
+                'image' => 'icons/google.png',
+                'body' => 'Google'
+            ],[
+                'icon' => 'fa-google-plus',
+                'image' => 'icons/google-plus.png',
+                'body' => 'Google+'
+            ],[
+                'icon' => 'fa-whatsapp',
+                'image' => 'icons/whatsapp.png',
+                'body' => 'Whatsapp'
+            ],[
+                'icon' => 'fa-telegram',
+                'image' => 'icons/telegram.png',
+                'body' => 'Telegram'
+            ],[
+                'icon' => 'fa-school',
+                'image' => 'icon/school.png',
+                'body' => 'School'
+            ],[
+                'icon' => 'fa-books',
+                'image' => 'icons/books.png',
+                'body' => 'Books'
+            ],[
+                'icon' => 'fa-user-graduate',
+                'image' => 'icons/user-graduate.png',
+                'body' => 'User Gradueate'
+            ],[
+                'icon' => 'fa-graduation-cap',
+                'image' => 'icons/graduation-cup.png',
+                'body' => 'Graduation Cap'
+            ],[
+                'icon' => 'fa-chalkboard-user',
+                'image' => 'icons/chalkboard-user.png',
+                'body' => 'Chalkboard User'
+            ],[
+                'icon' => 'fa-chalkboard',
+                'image' => 'icons/chalkboard.png',
+                'body' => 'chalkboard'
+            ],[
+                'icon' => 'fa-bus-school',
+                'image' => 'icons/bus-school.png',
+                'body' => 'Bus School'
+            ],[
+                'icon' => 'fa-book-open',
+                'image' => 'icons/book-open.png',
+                'body' => 'Book Open'
+            ],[
+                'icon' => 'fa-bell-school',
+                'image' => 'icons/school-bell.png',
+                'body' => 'Bell School'
+            ],[
+                'icon' => 'fa-mosque',
+                'image' => 'icons/mosque.png',
+                'body' => 'Mosque'
+            ],[
+                'icon' => 'fa-person-praying',
+                'image' => 'icons/praying.png',
+                'body' => 'Person Praying'
+            ],[
+                'icon' => 'fa-book-quran',
+                'image' => 'icons/quran.png',
+                'body' => 'Quran Book'
+            ],[
+                'icon' => 'fa-building',
+                'image' => 'icons/building.png',
+                'body' => 'Building'
+            ],[
+                'icon' => 'fa-building-shield',
+                'image' => 'icons/asrama.png',
+                'body' => 'Building Shield' 
+            ],[
+                'icon' => 'fa-flask',
+                'image' => 'icons/flask.png',
+                'body' => 'Flask'
+            ],[
+                'icon' => 'fa-users',
+                'image' => 'icons/users.png',
+                'body' => 'Users'
+            ],[
+                'icon' => 'fa-comments',
+                'image' => 'icons/comments.png',
+                'body' => 'Comments'
+            ]
         ];
         foreach($dataicon as $icon){
-            $datainput['parent_id'] = 5;
-            $datainput['children_id'] = 9;
-            $datainput['image'] = $icon['image'];
-            Views::create($datainput);
+            FontAwesome::create($icon);
         }
     }
 }

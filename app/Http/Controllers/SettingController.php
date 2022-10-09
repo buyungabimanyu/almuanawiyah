@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FontAwesome;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -79,7 +80,7 @@ class SettingController extends Controller
             'setting' => Setting::where('parent_id', 1)->where('active', true)->first(),
             'footers' => Setting::where('parent_id', 2)->where('active', true)->get(),
             'createFooter' => '',
-            'icons' => Setting::where('parent_id', 9)->where('active', true)->get()
+            'icons' => FontAwesome::all()
         ]);
     }
 
@@ -105,7 +106,7 @@ class SettingController extends Controller
             'setting' => Setting::where('parent_id', 1)->where('active', true)->first(),
             'footers' => Setting::where('parent_id', 2)->where('active', true)->get(),
             'editFooter' => $setting,
-            'icons' => Setting::where('parent_id', 9)->where('active', true)->get()
+            'icons' => FontAwesome::all()
         ]);
     }
 

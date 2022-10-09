@@ -111,20 +111,17 @@
           
           <form method="POST" action="{{ route('alasan.store') }}">
             @csrf
-
-            <div class="form-floating mb-3">
-                <select class="form-select" id="category" name="category_id">
-                  
-                  @foreach ($icons as $icon)
-                    @if (old('icon') == $icon->image)
-                      <option value="{{ $icon->image }}" selected><i class="feature-icon fa {!! $icon->image !!}"></i></option>
-                    @else
-                      <option value="{{ $icon->image }}"><i class="feature-icon fa {!! $icon->image !!}"></i></option>
-                    @endif
-                  @endforeach
-                  
-                </select>
-                <label for="icon">Alasan Icon</label>
+            <div class="form-group mb-3">
+              <label for="icon">Alasan Icon</label>
+              <select class="form-select" id="icon" name="icon">
+                @foreach ($icons as $icon)
+                  @if (old('icon') == $icon->icon)
+                    <option value="{{ $icon->icon }}" data-description="{{ $icon->body }}" data-imagescr="({{ asset($icon->image) }});" selected>{{ $icon->body }}</option>
+                  @else
+                    <option value="{{ $icon->icon }}" data-description="{{ $icon->body }}" data-imagescr="({{ asset($icon->image) }});">{{ $icon->body }}</option>
+                  @endif
+                @endforeach
+              </select>
             </div>
             <div class="mb-3">
               <label for="title" class="form-label">Alasan title</label>
@@ -155,10 +152,19 @@
     </div>
   </div>
   
+  <script src="{{ asset('js') }}/ddSlick.js"></script>
   <script>
     $(document).ready(function(){
         $("#create").modal('show');
     });
+
+    $('select#icon').ddslick({
+      width:"100%",
+      imagePosition:"left",
+      selectText:"",
+      onSelected:function(data){}
+      
+    })
   </script>
   
 @endif
@@ -177,18 +183,15 @@
           <form method="POST" action="{{ route('alasan.update', $edit->id) }}">
             @method('put')
             @csrf
-
             <div class="form-floating mb-3">
-                <select class="form-select" id="category" name="category_id">
-                  
+                <select class="form-select" id="icon" name="icon">
                   @foreach ($icons as $icon)
-                    @if (old('icon', $edit->image) == $icon->image)
-                      <option value="{{ $icon->image }}" selected>{{ $icon->name }}</option>
+                    @if (old('icon', $edit->icon) == $icon->icon)
+                      <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});" selected>{{ $icon->body }}</option>
                     @else
-                      <option value="{{ $icon->image }}">{{ $icon->name }}</option>
+                      <option value="{{ $icon->icon }}" style="background-image:url({{ asset($icon->image) }});">{{ $icon->body }}</option>
                     @endif
                   @endforeach
-                  
                 </select>
                 <label for="icon">Alasan Icon</label>
             </div>
