@@ -48,109 +48,135 @@ class DatabaseSeeder extends Seeder
 
         $dataicon = [
             [
+                'parent_id' => 1,
                 'icon' => 'fa-facebook',
                 'image' => 'icons/facebook.png',
-                'body' => 'Facebook'
+                'body' => 'facebook'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-twitter',
                 'image' => 'icons/twitter.png',
-                'body' => 'Twitter'
+                'body' => 'twitter'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-instagram',
                 'image' => 'icons/instagram.png',
-                'body' => 'Instagram'
+                'body' => 'instagram'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-tiktok',
                 'image' => 'icons/tik-tok.png',
-                'body' => 'Tiktok'
+                'body' => 'tik-tok'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-youtube',
                 'image' => 'icons/youtube.png',
-                'body' => 'Youtube'
+                'body' => 'youtube'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-google',
                 'image' => 'icons/google.png',
                 'body' => 'Google'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-google-plus',
                 'image' => 'icons/google-plus.png',
-                'body' => 'Google+'
+                'body' => 'Google-plus'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-whatsapp',
                 'image' => 'icons/whatsapp.png',
-                'body' => 'Whatsapp'
+                'body' => 'whatsapp'
             ],[
+                'parent_id' => 1,
                 'icon' => 'fa-telegram',
                 'image' => 'icons/telegram.png',
-                'body' => 'Telegram'
+                'body' => 'telegram'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-school',
-                'image' => 'icon/school.png',
-                'body' => 'School'
+                'image' => 'icons/school.png',
+                'body' => 'school'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-books',
                 'image' => 'icons/books.png',
-                'body' => 'Books'
+                'body' => 'books'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-user-graduate',
                 'image' => 'icons/user-graduate.png',
-                'body' => 'User Gradueate'
+                'body' => 'user gradueate'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-graduation-cap',
-                'image' => 'icons/graduation-cup.png',
-                'body' => 'Graduation Cap'
+                'image' => 'icons/graduation-cap.png',
+                'body' => 'graduation-cap'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-chalkboard-user',
                 'image' => 'icons/chalkboard-user.png',
-                'body' => 'Chalkboard User'
+                'body' => 'chalkboard-user'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-chalkboard',
                 'image' => 'icons/chalkboard.png',
                 'body' => 'chalkboard'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-bus-school',
                 'image' => 'icons/bus-school.png',
-                'body' => 'Bus School'
+                'body' => 'bus-school'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-book-open',
                 'image' => 'icons/book-open.png',
-                'body' => 'Book Open'
+                'body' => 'book-open'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-bell-school',
                 'image' => 'icons/school-bell.png',
-                'body' => 'Bell School'
+                'body' => 'bell-school'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-mosque',
                 'image' => 'icons/mosque.png',
-                'body' => 'Mosque'
+                'body' => 'mosque'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-person-praying',
                 'image' => 'icons/praying.png',
-                'body' => 'Person Praying'
+                'body' => 'person-praying'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-book-quran',
                 'image' => 'icons/quran.png',
-                'body' => 'Quran Book'
+                'body' => 'quran-book'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-building',
                 'image' => 'icons/building.png',
-                'body' => 'Building'
+                'body' => 'building'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-building-shield',
                 'image' => 'icons/asrama.png',
-                'body' => 'Building Shield' 
+                'body' => 'building-shield' 
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-flask',
                 'image' => 'icons/flask.png',
-                'body' => 'Flask'
+                'body' => 'flask'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-users',
                 'image' => 'icons/users.png',
-                'body' => 'Users'
+                'body' => 'users'
             ],[
+                'parent_id' => 2,
                 'icon' => 'fa-comments',
                 'image' => 'icons/comments.png',
-                'body' => 'Comments'
+                'body' => 'comments'
             ]
         ];
         foreach($dataicon as $icon){

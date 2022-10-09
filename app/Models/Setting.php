@@ -39,6 +39,11 @@ class Setting extends Model
     }
 
     public function footer(){
-        return self::where('parent_id', 2)->get();
+        return self::where('parent_id', 2)->where('active', true)->get();
+    }
+
+    public function font()
+    {
+        return $this->belongsTo(FontAwesome::class, 'icon');
     }
 }

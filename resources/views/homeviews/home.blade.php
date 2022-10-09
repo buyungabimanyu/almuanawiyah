@@ -43,7 +43,7 @@
 							@foreach ($alasan as $item)								
 								<!-- feature -->
 								<div class="feature">
-									<i class="feature-icon fa {!! ($item->image) ? $item->image : 'fa-hashtag' !!}"></i>
+									<i class="feature-icon fa {{ ($item->image) ? $item->font->icon : 'fa-hashtag' }}"></i>
 									<div class="feature-content">
 										<h4>{{ $item->title }}</h4>
 										<p>{{ $item->body }}</p>

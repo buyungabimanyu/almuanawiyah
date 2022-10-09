@@ -15,6 +15,7 @@ class CreateFontAwesomesTable extends Migration
     {
         Schema::create('font_awesomes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('parent_id');
             $table->string('body')->nullable();
             $table->string('image')->nullable();
             $table->string('icon')->nullable();

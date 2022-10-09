@@ -33,6 +33,6 @@ class AllPostsController extends Controller
         };
         Post::destroy($post->id);
 
-        return redirect('post')->with('success', 'The post has been deleted!!!');
+        return redirect('allposts')->with('success', 'The post has been deleted!!!');
     }
 }

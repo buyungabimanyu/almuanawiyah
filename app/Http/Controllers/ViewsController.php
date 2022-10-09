@@ -290,7 +290,8 @@ class ViewsController extends Controller
             'title' => 'Views Footer',
             'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
-            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
+            'switch' => ''
         ]);
     }
     
@@ -356,13 +357,24 @@ class ViewsController extends Controller
 
     public function alasanCreate()
     {
+        $icon = FontAwesome::where('parent_id', 2)->get();
+        $data = array();
+        foreach($icon as $x){
+            $p['text'] = $x['body'];
+            $p['value'] = $x['id'];
+            $p['selected'] = $x['body'];
+            $p['imageSrc'] = asset($x['image']);
+            $data[] = $p;
+        }
+        $icons = json_encode($data);
         return view('dashboard.views.why', [
             'title' => 'Views Footer',
             'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
             'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
-            'create' => '',
-            'icons' => FontAwesome::all()
+            'switch' => 'create',
+            'data' => '',
+            'icons' => $icons
         ]);
     }
 
@@ -387,13 +399,24 @@ class ViewsController extends Controller
 
     public function alasanEdit(Views $views)
     {
+        $icon = FontAwesome::where('parent_id', 2)->get();
+        $data = array();
+        foreach($icon as $x){
+            $p['text'] = $x['body'];
+            $p['value'] = $x['id'];
+            $p['selected'] = $x['body'];
+            $p['imageSrc'] = asset($x['image']);
+            $data[] = $p;
+        }
+        $icons = json_encode($data);
         return view('dashboard.views.why', [
             'title' => 'Views Footer',
             'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
             'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
             'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
-            'edit' => $views,
-            'icons' => FontAwesome::all()
+            'switch' => 'edit',
+            'data' => $views,
+            'icons' => $icons
         ]);
     }
 

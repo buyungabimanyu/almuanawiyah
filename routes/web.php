@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 	
 	Route::group(['middleware' => 'admin'], function(){
-		Route::resource('/categories', 'CategoryController');
+		Route::resource('/categories', 'CategoryController')->except('show');
 
 		Route::resource('/users', 'UsersController')->except('show');
 		Route::put('/users/{user:username}/mEditor', ['as' => 'users.mEditor', 'uses' => 'UsersController@mEditor']);

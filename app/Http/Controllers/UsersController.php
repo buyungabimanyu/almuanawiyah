@@ -167,6 +167,6 @@ class UsersController extends Controller
             return redirect('/')->withStatus(__('You are not an Admin dude'));
         }
         User::where('id', $user->id)->update(['is_admin' => true, 'is_editor' => true]);
-        return redirect('users')->with('success', $user->name . ' is already an editor!!!');
+        return redirect('users')->with('success', $user->name . ' is already an admin!!!');
     }
 }

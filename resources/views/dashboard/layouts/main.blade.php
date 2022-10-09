@@ -61,6 +61,13 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+      .dd-selected-image, .dd-option-image {
+        max-width: 50px !important;
+      }
+      .dd-selected {
+        max-height: 60px !important;
+      }
       
       </style>
 

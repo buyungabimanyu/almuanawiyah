@@ -14,7 +14,8 @@ class SettingController extends Controller
         return view('dashboard.setting.index',[
             'title' => 'Setting',
             'setting' => Setting::where('parent_id', 1)->where('active', true)->first(),
-            'footers' => Setting::where('parent_id', 2)->where('active', true)->get()
+            'footers' => Setting::where('parent_id', 2)->where('active', true)->get(),
+            'switch' => ''
         ]);
     }
 
@@ -24,6 +25,8 @@ class SettingController extends Controller
             'body' => 'nullable|max:255',
             'image' => 'image|file|max:2048'
         ]);
+
+        $validatedData['parent_id'] = 1;
 
         if($request->file('image')){
             $validatedData['image'] = $request->file('image')->store('main');
@@ -49,6 +52,7 @@ class SettingController extends Controller
             'image' => 'nullable|image|file|max:2048'
         ]);
 
+        $validatedData['parent_id'] = 1;
         if($request->file('image')){
             if($request->oldImage){
                 Storage::delete($request->oldImage);
@@ -75,12 +79,23 @@ class SettingController extends Controller
 
     public function createFooter()
     {
+        $icon = FontAwesome::where('parent_id', 1)->get();
+        $data = array();
+        foreach($icon as $x){
+            $p['text'] = $x['body'];
+            $p['value'] = $x['id'];
+            $p['selected'] = $x['body'];
+            $p['imageSrc'] = asset($x['image']);
+            $data[] = $p;
+        }
+        $icons = json_encode($data);
         return view('dashboard.setting.index',[
             'title' => 'Setting',
             'setting' => Setting::where('parent_id', 1)->where('active', true)->first(),
             'footers' => Setting::where('parent_id', 2)->where('active', true)->get(),
-            'createFooter' => '',
-            'icons' => FontAwesome::all()
+            'switch' => 'create',
+            'data' => '',
+            'icons' => $icons
         ]);
     }
 
@@ -96,17 +111,28 @@ class SettingController extends Controller
 
         Setting::create($data);
 
-        return redirect('/setting')->with('success', 'Setting Berasil ditambah!');
+        return redirect('/setting')->with('success', 'Footer Berasil ditambah!');
     }
     
     public function editFooter(Setting $setting)
     {
+        $icon = FontAwesome::where('parent_id', 1)->get();
+        $data = array();
+        foreach($icon as $x){
+            $p['text'] = $x['body'];
+            $p['value'] = $x['id'];
+            $p['selected'] = $x['body'];
+            $p['imageSrc'] = asset($x['image']);
+            $data[] = $p;
+        }
+        $icons = json_encode($data);
         return view('dashboard.setting.index',[
             'title' => 'Setting',
             'setting' => Setting::where('parent_id', 1)->where('active', true)->first(),
             'footers' => Setting::where('parent_id', 2)->where('active', true)->get(),
-            'editFooter' => $setting,
-            'icons' => FontAwesome::all()
+            'switch' => 'edit',
+            'data' => $setting,
+            'icons' => $icons
         ]);
     }
 

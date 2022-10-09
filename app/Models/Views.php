@@ -19,6 +19,11 @@ class Views extends Model
         $this->hasMany(self::class, 'children_id');
     }
 
+    public function font()
+    {
+        return $this->belongsTo(FontAwesome::class, 'image', 'id');
+    }
+
     public function mainHeader() {
         $main = self::select('image')->where('parent_id', 1)->where('active', true)->first();
         if($main == true ){

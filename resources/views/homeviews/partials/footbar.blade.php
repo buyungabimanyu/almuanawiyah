@@ -11,12 +11,19 @@
 					<div class="col-md-4 col-md-push-8">
 						@if (App\Models\Setting::footer()->count())
 							<ul class="footer-social">
-								@foreach (App\Models\Setting::footer()->count() as $item)
-									<li><a href="{{ $item->body }}"><i class="fa {{ $item->icon }}"></i></a></li>
+								@foreach (App\Models\Setting::footer() as $item)
+									<li><a href="{{ $item->body }}" class="{{ $item->font->body }}"><i class="fa {{ $item->font->icon }}"></i></a></li>
 								@endforeach
 							</ul>	
 						@else
-							<p class="italic">No Footer yet</p>
+							<ul class="footer-social">								
+								<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+								<li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+							</ul>
 						@endif
 					</div>
 					<!-- /social -->

@@ -6,7 +6,7 @@
     <h1 class="h2">Posts Categories</h1>
   </div>
   <div class="table-responsive col-lg-6">
-    <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Create new post</a>
+    <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Create new category</a>
 
     @if (session()->has('success'))
     <div class="alert alert-success" role="alert">
@@ -75,7 +75,7 @@
       </div>
       <div class="modal-body">
         
-        <form method="POST" action="/dashboard/categories" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
             <label for="name" class="form-label">Category name</label>
@@ -163,7 +163,7 @@ function previewImage()
       </div>
       <div class="modal-body">
         
-        <form method="POST" action="/dashboard/categories/{{ $editCategory->slug }}" enctype="multipart/form-data">
+        <form method="POST" action="/dashboard/categories/{{ route('categories.update',$editCategory->slug) }}" enctype="multipart/form-data">
           @method('PUT')
           @csrf
           <div class="mb-3">
