@@ -44,8 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/views/main', ['as' => 'mainview', 'uses' => 'VIewsController@MainView']);
 		Route::get('/views/home', ['as' => 'homeview', 'uses' => 'ViewsController@HomeView']);
 		Route::get('/views/about', ['as' => 'aboutview', 'uses' => 'ViewsController@AboutView']);
-		Route::get('/views/courses', ['as' => 'coursesview', 'uses' => 'ViewsController@CoursesView']);
+		Route::get('/views/coursestitle', ['as' => 'coursesview', 'uses' => 'ViewsController@CoursesView']);
 		Route::get('/views/why', ['as' => 'whyview', 'uses' => 'ViewsController@WhyView']);
+		Route::get('/views/why/alasan', ['as' => 'alasanview', 'uses' => 'ViewsController@alasanView']);
 		Route::get('/views/video', ['as' => 'videoview', 'uses' => 'ViewsController@VideoView']);
 		Route::get('/views/contact', ['as' => 'contactview', 'uses' => 'ViewsController@ContactView']);
 		Route::get('/views/blog', ['as' => 'blogview', 'uses' => 'ViewsController@BlogView']);
@@ -62,8 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('/views/about',['as' => 'about.store', 'uses' => 'ViewsController@AboutStore']);
 		Route::put('/views/about',['as' => 'about.update', 'uses' => 'ViewsController@AboutUpdate']);
 
-		Route::post('/views/courses',['as' => 'coursesTitle.store', 'uses' => 'ViewsController@CoursesStore']);
-		Route::put('/views/courses',['as' => 'coursesTitle.update', 'uses' => 'ViewsController@CoursesUpdate']);
+		Route::post('/views/coursestitle',['as' => 'coursesTitle.store', 'uses' => 'ViewsController@CoursesStore']);
+		Route::put('/views/coursestitle',['as' => 'coursesTitle.update', 'uses' => 'ViewsController@CoursesUpdate']);
 
 		Route::post('/views/why',['as' => 'why.store', 'uses' => 'ViewsController@WhyStore']);
 		Route::put('/views/why',['as' => 'why.update', 'uses' => 'ViewsController@WhyUpdate']);
@@ -81,12 +82,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::put('/setting/footer/{setting}', ['as' => 'footer.update', 'uses' => 'SettingController@updateFooter']);
 		Route::delete('/setting/footer/{setting}', ['as' => 'footer.destroy', 'uses' => 'SettingController@destroyFooter']);
 
-		Route::get('/courses', ['as' => 'courses.index', 'uses' => 'CoursesController@index']);
-		Route::get('/courses/create', ['as' => 'courses.create', 'uses' => 'CoursesController@create']);
-		Route::post('/courses', ['as' => 'courses.store', 'uses' => 'CoursesController@store']);
-		Route::get('/courses/{courses}/edit', ['as' => 'courses.edit', 'uses' => 'CoursesController@edit']);
-		Route::put('/courses/{courses}/update', ['as' => 'courses.update', 'uses' => 'CoursesController@update']);
-		Route::delete('/courses/{courses}', ['as' => 'courses.destroy', 'uses' => 'CoursesController@destroy']);
+		Route::get('/views/courses', ['as' => 'courses.index', 'uses' => 'CoursesController@index']);
+		Route::get('/views/courses/create', ['as' => 'courses.create', 'uses' => 'CoursesController@create']);
+		Route::post('/views/courses', ['as' => 'courses.store', 'uses' => 'CoursesController@store']);
+		Route::get('/views/courses/{courses}/edit', ['as' => 'courses.edit', 'uses' => 'CoursesController@edit']);
+		Route::put('/views/courses/{courses}/update', ['as' => 'courses.update', 'uses' => 'CoursesController@update']);
+		Route::delete('/views/courses/{courses}', ['as' => 'courses.destroy', 'uses' => 'CoursesController@destroy']);
 
 		Route::get('/views/why/alasan/create', ['as' => 'alasan.create', 'uses' => 'ViewsController@alasanCreate']);
 		Route::post('/views/why/alasan', ['as' => 'alasan.store', 'uses' => 'ViewsController@alasanStore']);

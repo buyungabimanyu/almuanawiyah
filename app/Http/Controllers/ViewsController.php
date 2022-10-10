@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FontAwesome;
-use App\Models\Views;
+use App\Models\{Views, Courses};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,7 +12,9 @@ class ViewsController extends Controller
     public function index()
     {
         return view('dashboard.views.index',[
-            'title' => 'ViewsController'
+            'title' => 'ViewsController',
+            'courses' => Courses::all(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
         ]);
     }
 
@@ -353,6 +355,17 @@ class ViewsController extends Controller
         }
 
         return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+    }
+
+    public function alasanView()
+    {
+        return view('dashboard.views.why', [
+            'title' => 'Views Footer',
+            'whyTitle' => Views::select('body')->where('parent_id', 5)->where('children_id', 1)->where('active', true)->first(),
+            'whyBody' => Views::select('body')->where('parent_id', 5)->where('children_id', 2)->where('active', true)->first(),
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
+            'switch' => 'alasan'
+        ]);
     }
 
     public function alasanCreate()

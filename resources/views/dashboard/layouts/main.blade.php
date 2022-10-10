@@ -7,6 +7,9 @@
     <title>{{ App\Models\Setting::title() }} | {{ $title }}</title>
     <link rel="shortcut icon" href="{{ asset('storage/' . App\Models\Setting::icon()) }}" type="image/x-icon">
 
+    
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -80,8 +83,12 @@
     display: none;
   }
 </style>
+
 		<!-- Font Awesome Icon -->
 		<link rel="stylesheet" href="{{ asset('css') }}/font-awesome.min.css">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="{{ asset('css') }}/style.css"/>
    <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ asset('css') }}/dashboard.css">
     

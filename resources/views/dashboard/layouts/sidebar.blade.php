@@ -58,77 +58,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('courses*') ? 'active' : '' }}" aria-current="page" href="{{ route('courses.index') }}">
-              <span data-feather="archive" class="align-text-bottom"></span>
-              Courses List
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link {{ Request::is('contactus*') ? 'active' : '' }}" aria-current="page" href="{{ route('contactus') }}">
               <span data-feather="archive" class="align-text-bottom"></span>
               Email Sender
             </a>
           </li>
           <li class="nav-item">
-            <details>
-              <summary class="nav-link {{ Request::is('views*') ? 'active' : '' }}"><span data-feather="layout" class="align-text-bottom"></span> Views</summary>
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('indexview') }}">
-                    <span data-feather="image" class="align-text-bottom"></span>
-                    Index view
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('mainview') }}">
-                    <span data-feather="image" class="align-text-bottom"></span>
-                    Main Header
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('homeview') }}">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Home View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('aboutview') }}">
-                    <span data-feather="at-sign" class="align-text-bottom"></span>
-                    About View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('coursesview') }}">
-                    <span data-feather="briefcase" class="align-text-bottom"></span>
-                    Courses View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('contactview') }}">
-                    <span data-feather="compass" class="align-text-bottom"></span>
-                    Contact View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('whyview') }}">
-                    <span data-feather="airplay" class="align-text-bottom"></span>
-                    Why View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('videoview') }}">
-                    <span data-feather="airplay" class="align-text-bottom"></span>
-                    Video View
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{ route('blogview') }}">
-                    <span data-feather="book" class="align-text-bottom"></span>
-                    Blog View
-                  </a>
-                </li>
-              </ul>
-            </details>
+            <a class="nav-link {{ Request::is('views*') ? 'active' : '' }}" aria-current="page" href="{{ route('indexview') }}">
+              <span data-feather="layout" class="align-text-bottom"></span> Views
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('setting*') ? 'active' : '' }}" aria-current="page" href="{{ route('setting.index') }}">
