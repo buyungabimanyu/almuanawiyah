@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User, Category, Courses, FontAwesome, Post, Setting, Views};
+use App\Models\{User, Category, FontAwesome, Post};
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,8 +43,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Post::factory(20)->create();
-   
-        Courses::factory(4)->create();
 
         $dataicon = [
             [
