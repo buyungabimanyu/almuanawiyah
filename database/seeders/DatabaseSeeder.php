@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User, Category, FontAwesome, Post};
+use App\Models\{User,FontAwesome};
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,34 +15,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Buyung Abimanyu',
-            'username' => 'buyungabimanyu',
-            'email' => 'buyung@gmail.com',
-            'password' => bcrypt('buyung24'),
+            'name' => 'Almuanawiyah',
+            'username' => 'almuanawiyah',
+            'email' => 'Almuanawiyah@pesantren.com',
+            'password' => bcrypt('almuanawiyah1234567890'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
             'is_admin' => true,
             'is_editor' => true
         ]);
-
-        User::factory(4)->create();
-
-        Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming'
-        ]);
-        Category::create([
-            'name' => 'Web Design',
-            'slug' => 'web-design'
-        ]);
-        
-        Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
-        ]);
-
-        Post::factory(20)->create();
 
         $dataicon = [
             [
