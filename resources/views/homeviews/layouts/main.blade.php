@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ App\Models\Setting::title() }} {{ ($title == 'Home') ? '' : '| ' . $title }}</title>
-    <link rel="shortcut icon" href="{{ asset('storage/' . App\Models\Setting::logo()) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/' . App\Models\Setting::logo()) }}" type="image/x-icon">
     
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">

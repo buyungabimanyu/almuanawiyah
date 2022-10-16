@@ -18,7 +18,6 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Category Icon</th>
           <th>Category Name</th>
           <th class="disabled-sorting text-right">Actions</th>
         </tr>
@@ -26,7 +25,6 @@
       <tfoot>
         <tr>
           <th>#</th>
-          <th>Category Icon</th>
           <th>Category Name</th>
           <th class="disabled-sorting text-right">Actions</th>
         </tr>
@@ -37,15 +35,6 @@
             
         <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>
-            <span class="avatar avatar-sm rounded-circle">
-              @if ($category->image)
-                <img src="{{ asset('/storage/' . $category->image) }}" alt="" style="max-width: 80px; border-radiu: 100px">
-              @else                
-                <img src="{{asset('img/apple-icon.png')}}" alt="" style="max-width: 80px; border-radiu: 100px">
-              @endif
-            </span>
-          </td>
           <td>{{ $category->name }}</td>
           <td>
             <a href="{{ route('categories.edit', $category->slug) }}" class="badge bg-warning">
@@ -95,19 +84,7 @@
               {{ $message }}
             </div>
             @enderror
-          </div>
-  
-          <div class="mb-3">
-            <label for="image" class="form-label">Category Image</label>
-            <img class="img-preview img-fluid col-sm-5 mb-3">
-            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
-            @error('image')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-            @enderror
-          </div>
-          
+          </div>          
           
         </div>
         <div class="modal-footer">
@@ -132,22 +109,6 @@ name.addEventListener('change', function(){
   .then(data => slug.value = data.slug);
 });
 
-function previewImage()
-{
-  const image = document.querySelector('#image');
-  const imgPreview = document.querySelector('.img-preview');
-  
-  imgPreview.style.display = 'block';
-
-  const oFReader = new FileReader();
-  oFReader.readAsDataURL(image.files[0]);
-
-  oFReader.onload = function(oFREvent)
-  {
-    imgPreview.src = oFREvent.target.result;
-  }
-
-};
 </script>
 
 @endif
@@ -184,23 +145,7 @@ function previewImage()
               {{ $message }}
             </div>
             @enderror
-          </div>
-  
-          <div class="mb-3">
-            <label for="image" class="form-label">Category Image</label>
-            <input type="hidden" name="oldImage" value="{{ $editCategory->image }}">
-            @if ($editCategory->image)
-              <img src="{{ asset('storage/' . $editCategory->image) }}" class="img-preview img-fluid col-sm-5 mb-3 d-block">
-            @else
-              <img class="img-preview img-fluid col-sm-5 mb-3">
-            @endif
-            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
-            @error('image')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-            @enderror
-          </div>          
+          </div>       
           
         </div>
         <div class="modal-footer">
@@ -224,23 +169,6 @@ name.addEventListener('change', function(){
   .then(response => response.json())
   .then(data => slug.value = data.slug);
 });
-
-function previewImage()
-{
-  const image = document.querySelector('#image');
-  const imgPreview = document.querySelector('.img-preview');
-  
-  imgPreview.style.display = 'block';
-
-  const oFReader = new FileReader();
-  oFReader.readAsDataURL(image.files[0]);
-
-  oFReader.onload = function(oFREvent)
-  {
-    imgPreview.src = oFREvent.target.result;
-  }
-
-};
 </script>
 
 @endif

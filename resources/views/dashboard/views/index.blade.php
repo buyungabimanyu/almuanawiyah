@@ -6,7 +6,7 @@
 <div id="home" class="hero-area">
 
   <!-- Backgound Image -->
-  <div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('storage/' . App\Models\Views::mainHeader()) }})"></div>
+  <div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('assets/' . App\Models\Views::mainHeader()) }})"></div>
   <!-- /Backgound Image -->
 
   <div class="home-wrapper">
@@ -90,7 +90,7 @@
 
         <div class="col-md-6">
           <div class="about-img">
-            <img src="{{ asset('storage/' . App\Models\Views::aboutImg()) }}" alt="">
+            <img src="{{ asset('assets/' . App\Models\Views::aboutImg()) }}" alt="">
           </div>
         </div>
 
@@ -131,9 +131,9 @@
                 <div class="course">
                   <div class="course-img">
                     @if ($item->image)
-                      <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
+                      <img src="{{ asset('assets/' . $item->image) }}" alt="{{ $item->title }}">
                     @else
-                      <img src="{{ asset('img') }}/course01.jpg" alt="{{ $item->title }}">
+                      <img src="{{ asset('assets/main') }}/course01.jpg" alt="{{ $item->title }}">
                     @endif
                     <i class="course-link-icon fa fa-link"></i>
                   </div>
@@ -152,7 +152,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course01.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course01.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
@@ -168,7 +168,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course02.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course02.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">Introduction to CSS </a>
@@ -184,7 +184,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course03.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course03.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">The Ultimate Drawing Course | From Beginner To Advanced</a>
@@ -199,7 +199,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course04.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course04.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">The Complete Web Development Course</a>
@@ -215,7 +215,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course05.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course05.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
@@ -231,7 +231,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course06.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course06.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">All You Need To Know About Web Design</a>
@@ -247,7 +247,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course07.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course07.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">How to Get Started in Photography</a>
@@ -264,7 +264,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
               <div class="course">
                 <a href="#" class="course-img">
-                  <img src="{{ asset('img') }}/course08.jpg" alt="">
+                  <img src="{{ asset('assets/main') }}/course08.jpg" alt="">
                   <i class="course-link-icon fa fa-link"></i>
                 </a>
                 <a class="course-title" href="#">Typography From A to Z</a>

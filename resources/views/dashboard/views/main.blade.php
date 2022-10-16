@@ -19,7 +19,7 @@
                 @if ($main[0]->image)
                 <div class="row">
                     <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $main[0]->image) }}" class="img-preview img-fluid card-img-top img-thumbnail my-3 d-block">
+                            <img src="{{ asset('assets/' . $main[0]->image) }}" class="img-preview img-fluid card-img-top img-thumbnail my-3 d-block">
                         </div>
                     </div>
                 @else

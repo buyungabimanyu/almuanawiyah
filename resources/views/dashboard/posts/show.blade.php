@@ -25,10 +25,10 @@
 
             @if ($post->image)
                 <div style="max-height: 350px; overflow:hidden">
-                    <img src="{{ asset('/storage/' . $post->image) }}" class="img-fluid mt-3" alt="{{ $post->title }}">
+                    <img src="{{ asset('assets/' . $post->image) }}" class="img-fluid mt-3" alt="{{ $post->title }}">
                 </div>
             @else                
-                <img src="{{ asset('img') }}/post01.jpg" class="img-fluid mt-3">
+                <img src="{{ asset('assets/main') }}/post01.jpg" class="img-fluid mt-3">
             @endif
 
             <article class="my-3 fs-5">

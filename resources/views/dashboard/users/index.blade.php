@@ -51,9 +51,9 @@
                   <td>
                     <span class="avatar avatar-sm rounded-circle">
                       @if ($user->image)
-                        <img src="{{ asset('/storage/' . $user->image) }}" alt="" style="max-width: 80px; border-radiu: 100px">
+                        <img src="{{ asset('assets/' . $user->image) }}" alt="" style="max-width: 80px; border-radiu: 100px">
                       @else                
-                        <img src="{{asset('img/default-avatar.png')}}" alt="" style="max-width: 80px; border-radiu: 100px">
+                        <img src="{{asset('assets/main/default-avatar.png')}}" alt="" style="max-width: 80px; border-radiu: 100px">
                       @endif
                     </span>
                   </td>
@@ -211,9 +211,9 @@
             <div class="col-md-4">
               <div class="card">
                 @if ($editUser->image)
-                    <img class="img-fluid card-img-top img-thumbnail" src="{{ asset('/storage/' . $editUser->image) }}" alt="...">
+                    <img class="img-fluid card-img-top img-thumbnail" src="{{ asset('assets/' . $editUser->image) }}" alt="...">
                 @else                
-                    <img class="img-fluid card-img-top img-thumbnail" src="{{asset('img/default-avatar.png')}}" alt="...">
+                    <img class="img-fluid card-img-top img-thumbnail" src="{{asset('assets/main/default-avatar.png')}}" alt="...">
                 @endif
                 <div class="card-body">
                   <h5 class="title">{{ $editUser->username }}</h5>

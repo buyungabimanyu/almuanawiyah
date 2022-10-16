@@ -34,5 +34,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('editor', function(User $user){
             return $user->is_editor;
         });
+
+        $this->app->bind('path.public', function(){
+            return realpath(base_path() . '/public');
+        });
     }
 }

@@ -6,7 +6,7 @@
 		<div class="hero-area section">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url({{ ($post->image) ? $post->image : asset('img').'/blog-post-background.jpg' }})"></div>
+			<div class="bg-image bg-parallax overlay" style="background-image:url({{ ($post->image) ? asset('assets/'. $post->image ) : asset('img').'/blog-post-background.jpg' }})"></div>
 			<!-- /Backgound Image -->
 
 			<div class="container">

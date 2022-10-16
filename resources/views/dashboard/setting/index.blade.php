@@ -101,7 +101,7 @@
                         <label for="image" class="form-label">Logo</label>
                         <input type="hidden" name="oldImage" value="{{ $setting->image }}">
                         @if ($setting->image)
-                            <img src="{{ asset('storage/' . $setting->image) }}" class="img-preview img-fluid col-sm-4 mb-3 d-block">
+                            <img src="{{ asset('assets/' . $setting->image) }}" class="img-preview img-fluid col-sm-4 mb-3 d-block">
                         @else
                             <img class="img-preview img-fluid col-sm-4 mb-3">
                         @endif
@@ -117,7 +117,7 @@
                         <label for="icon" class="form-label">Icon</label>
                         <input type="hidden" name="oldIcon" value="{{ $setting->icon }}">
                         @if ($setting->icon)
-                            <img src="{{ asset('storage/' . $setting->icon) }}" class="icon-preview img-fluid col-sm-4 mb-3 d-block">
+                            <img src="{{ asset('assets/' . $setting->icon) }}" class="icon-preview img-fluid col-sm-4 mb-3 d-block">
                         @else
                             <img class="icon-preview img-fluid col-sm-4 mb-3">
                         @endif

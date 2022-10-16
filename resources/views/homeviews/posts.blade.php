@@ -6,7 +6,7 @@
 		<div class="hero-area section">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('storage/' . App\Models\Views::mainHeader()) }})"></div>
+			<div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('assets/' . App\Models\Views::mainHeader()) }})"></div>
 			<!-- /Backgound Image -->
 
 			<div class="container">
@@ -48,9 +48,9 @@
                         <a href="/blogposts?category={{ $post->category->slug }}" style="position: absolute; top:0; left:0; z-index:2; background: rgba(0, 0, 0, 0.65); color:azure">{{ $post->category->name }}</a>
                         <a href="{{ route('blogpost', $post->slug) }}" style="z-index: 1">
                           @if ($post->image)
-                            <img src="{{ asset('/storage/' . $post->image) }}" class="card-img-top" alt="{{ $post->category->name }}">
+                            <img src="{{ asset('/assets/' . $post->image) }}" class="card-img-top" alt="{{ $post->category->name }}">
                           @else
-                            <img src="{{ asset('img') }}/blog01.jpg" alt="{{ $post->category->name }}">
+                            <img src="{{ asset('/assets/main') }}/blog01.jpg" alt="{{ $post->category->name }}">
                           @endif
                         </a>
                       </div>

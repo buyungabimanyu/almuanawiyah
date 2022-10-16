@@ -34,14 +34,14 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::put('/users/{user:username}/mEditor', ['as' => 'users.mEditor', 'uses' => 'UsersController@mEditor']);
 		Route::put('/users/{user:username}/mAdmin', ['as' => 'users.mAdmin', 'uses' => 'UsersController@mAdmin']);
 
-		Route::get('/allposts', ['as' => 'allposts.index', 'uses' => 'AllpostsController@index']);
-		Route::get('/allposts/{post:slug}', ['as' => 'allposts.show', 'uses' => 'AllpostsController@show']);
-		Route::delete('/allposts/{post:slug}', ['as' => 'allposts.destroy', 'uses' => 'AllpostsController@destroy']);
+		Route::get('/allposts', ['as' => 'allposts.index', 'uses' => 'AllPostsController@index']);
+		Route::get('/allposts/{post:slug}', ['as' => 'allposts.show', 'uses' => 'AllPostsController@show']);
+		Route::delete('/allposts/{post:slug}', ['as' => 'allposts.destroy', 'uses' => 'AllPostsController@destroy']);
 
 		Route::get('/contactus', ['as' => 'contactus', 'uses' => 'ContactController@index']);
 		
-		Route::get('/views/index', ['as' => 'indexview', 'uses' => 'VIewsController@index']);
-		Route::get('/views/main', ['as' => 'mainview', 'uses' => 'VIewsController@MainView']);
+		Route::get('/views', ['as' => 'views', 'uses' => 'ViewsController@index']);
+		Route::get('/views/main', ['as' => 'mainview', 'uses' => 'ViewsController@MainView']);
 		Route::get('/views/home', ['as' => 'homeview', 'uses' => 'ViewsController@HomeView']);
 		Route::get('/views/about', ['as' => 'aboutview', 'uses' => 'ViewsController@AboutView']);
 		Route::get('/views/coursestitle', ['as' => 'coursesview', 'uses' => 'ViewsController@CoursesView']);

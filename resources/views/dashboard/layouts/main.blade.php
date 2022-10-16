@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.101.0">
     <title>{{ App\Models\Setting::title() }} | {{ $title }}</title>
-    <link rel="shortcut icon" href="{{ asset('storage/' . App\Models\Setting::icon()) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/' . App\Models\Setting::icon()) }}" type="image/x-icon">
 
     
 		<!-- Google font -->

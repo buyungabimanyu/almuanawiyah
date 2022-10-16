@@ -41,7 +41,7 @@
     <div class="mb-3">
         <label for="image" class="form-label">Image </label>
         {!! ($image) ? '<input type="hidden" name="oldImage" value="' . $image->image . '">' : '' !!}
-        <img class="img-preview img-fluid col-sm-4 mb-3" src="{{ ($image) ? asset('storage/' . $image->image) : '' }}">
+        <img class="img-preview img-fluid col-sm-4 mb-3" src="{{ ($image) ? asset('assets/' . $image->image) : '' }}">
         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
         @error('image')
             <div class="invalid-feedback">

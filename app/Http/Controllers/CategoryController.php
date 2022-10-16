@@ -49,14 +49,8 @@ class CategoryController extends Controller
         }
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:categories',
-            'image' => 'image|file|max:1024'
+            'slug' => 'required|unique:categories'
         ]);
-
-        if($request->file('image'))
-        {
-            $validatedData['image'] = $request->file('image')->store('categories-image');
-        };
 
         Category::create($validatedData);
 
@@ -127,9 +121,6 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         if($category){
-            if($category->image){
-                Storage::delete($category->image);
-            };
             $category->post()->delete();
             $category->delete();
     
