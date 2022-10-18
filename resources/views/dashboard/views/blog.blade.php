@@ -6,12 +6,6 @@
     <h1 class="h2">Blog Title</h1>
 </div>
 
-@if (session()->has('success'))
-<div class="alert alert-success" role="alert">
-    {{ session('success') }}
-</div>    
-@endif
-
 <form action="{{ ($blog->count()) ? route('blog.update', $blog[0]->id) : route('blog.store') }}" method="post">
 @if ($blog->count())
     @method('PUT')

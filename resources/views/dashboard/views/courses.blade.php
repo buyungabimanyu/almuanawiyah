@@ -6,12 +6,6 @@
     <h1 class="h2">Courses View</h1>
 </div>
 
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
 <form action="{{ ($coursesTitle || $coursesBody ) ? route('coursesTitle.update') : route('coursesTitle.store') }}" method="post">
 @if ($coursesTitle || $coursesBody )
     @method('PUT')

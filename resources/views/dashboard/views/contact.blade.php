@@ -6,12 +6,6 @@
     <h1 class="h2">Contact View</h1>
 </div>
 
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
 <form action="{{ ($contactTitle || $body || $email || $phone || $address ) ? route('contact.update') : route('contact.store') }}" method="post" enctype="multipart/form-data">
 @if ($contactTitle || $body || $email || $phone || $address )
     @method('PUT')

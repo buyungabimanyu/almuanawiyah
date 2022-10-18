@@ -202,7 +202,7 @@
                         <td>
                             <span class="avatar avatar-sm rounded-circle">
                             @if ($footer->icon)
-                                <i class="fa-brands {{ $footer->icon }}"></i>
+                                <i class="fa-brands {{ $footer->font->icon }}"></i>
                             @else
                                 <i class="fa-brands fa-usb"></i>
                             @endif

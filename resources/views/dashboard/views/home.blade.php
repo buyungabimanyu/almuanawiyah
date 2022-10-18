@@ -6,12 +6,6 @@
     <h1 class="h2">Home View</h1>
 </div>
 
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
 <form action="{{ ($homeTitle || $homeBody ) ? route('home.update') : route('home.store') }}" method="post">
 @if ($homeTitle || $homeBody )
     @method('PUT')

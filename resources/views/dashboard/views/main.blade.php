@@ -1,11 +1,6 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>    
-    @endif
 
     <form action="{{ ($main->count()) ? route('main.update', $main[0]->id) : route('main.store') }}" method="post" enctype="multipart/form-data">
         @if ($main->count())

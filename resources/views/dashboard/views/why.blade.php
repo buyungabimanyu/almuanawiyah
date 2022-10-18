@@ -27,7 +27,7 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <i class="fa-sharp fa-solid {{ ($data->image) ? $data->font->icon : 'fa-hashtag' }}"></i>
+                    <i class="fa {{ ($data->image) ? $data->font->icon : 'fa-hashtag' }}"></i>
                 </td>
                 <td>{{ $data->title }}</td>
                 <td>{{ $data->body }}</td>
@@ -146,12 +146,6 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Why View</h1>
             </div>
-            
-            @if (session()->has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
             
             <form action="{{ ($whyTitle || $whyBody ) ? route('why.update') : route('why.store') }}" method="post">
             @if ($whyTitle || $whyBody )

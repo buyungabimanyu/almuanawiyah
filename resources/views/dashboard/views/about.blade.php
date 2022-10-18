@@ -5,12 +5,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">About View</h1>
 </div>
-
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
 <form action="{{ ($aboutTitle || $aboutBody || $image) ? route('about.update') : route('about.store') }}" method="post" enctype="multipart/form-data">
 @if ($aboutTitle || $aboutBody || $image)
     @method('PUT')

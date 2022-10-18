@@ -6,12 +6,6 @@
     <h1 class="h2">Video View</h1>
 </div>
 
-@if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
 <form action="{{ ($videoTitle || $videoBody || $videoText || $videoPlay ) ? route('video.update') : route('video.store') }}" method="post">
 @if ($videoTitle || $videoBody || $videoText || $videoPlay )
     @method('PUT')

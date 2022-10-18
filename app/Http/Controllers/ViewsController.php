@@ -38,7 +38,7 @@ class ViewsController extends Controller
 
         Views::create($validatedData);
 
-        return redirect('/views/main')->with('success', 'Main Header Berasil ditambah!');
+        return redirect('/views')->with('success', 'Main Header Berasil ditambah!');
     }
 
     public function MainUpdate(Request $request, Views $views)
@@ -62,7 +62,7 @@ class ViewsController extends Controller
         $views->update(['active' => false]);
         Views::create($validatedData);
 
-        return redirect('/views/main')->with('success', 'Main Header Berasil ditambah!');
+        return redirect('/views')->with('success', 'Main Header Berasil ditambah!');
     }
 
     public function HomeView()
@@ -100,7 +100,7 @@ class ViewsController extends Controller
         }
 
 
-        return redirect('/views/home')->with('success', 'Home View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Home View Berasil diUbah!');
     }
 
     public function HomeUpdate(Request $request)
@@ -131,7 +131,7 @@ class ViewsController extends Controller
             Views::create($dataBody);
         }
 
-        return redirect('/views/home')->with('success', 'Home View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Home View Berasil diUbah!');
     }
 
     public function AboutView()
@@ -175,7 +175,7 @@ class ViewsController extends Controller
             Views::create($image);
         }
 
-        return redirect('/views/about')->with('success', 'About View Berasil diUbah!');
+        return redirect('/views')->with('success', 'About View Berasil diUbah!');
     }
 
     public function AboutUpdate(Request $request)
@@ -214,7 +214,7 @@ class ViewsController extends Controller
             Views::create($image);
         }
 
-        return redirect('/views/about')->with('success', 'About View Berasil diUbah!');
+        return redirect('/views')->with('success', 'About View Berasil diUbah!');
     }
 
     public function CoursesView()
@@ -252,7 +252,7 @@ class ViewsController extends Controller
         }
 
 
-        return redirect('/views/courses')->with('success', 'Courses View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Courses View Berasil diUbah!');
     }
 
     public function CoursesUpdate(Request $request)
@@ -283,7 +283,7 @@ class ViewsController extends Controller
             Views::create($dataBody);
         }
 
-        return redirect('/views/courses')->with('success', 'Courses View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Courses View Berasil diUbah!');
     }
     
     public function WhyView()
@@ -323,7 +323,7 @@ class ViewsController extends Controller
         }
 
 
-        return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Why View Berasil diUbah!');
     }
 
     public function WhyUpdate(Request $request)
@@ -354,7 +354,7 @@ class ViewsController extends Controller
             Views::create($dataBody);
         }
 
-        return redirect('/views/why')->with('success', 'Why View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Why View Berasil diUbah!');
     }
 
     public function alasanView()
@@ -407,7 +407,7 @@ class ViewsController extends Controller
         
         Views::create($data);
 
-        return redirect('/views/why')->with('success', 'Alasan Berasil ditambahkan!!!');
+        return redirect('/views')->with('success', 'Alasan Berasil ditambahkan!!!');
     }
 
     public function alasanEdit(Views $views)
@@ -463,14 +463,14 @@ class ViewsController extends Controller
 
         $views->update($data);
 
-        return redirect('/views/why')->with('success', 'Alasan Berasil diubah!!!');
+        return redirect('/views')->with('success', 'Alasan Berasil diubah!!!');
     }
     
     public function alasanDestroy(Views $views)
     {
         $views->delete();
 
-        return redirect('/views/why')->with('success', 'Alasan Berasil dihapus!!!');
+        return redirect('/views')->with('success', 'Alasan Berasil dihapus!!!');
     }
     
     public function VideoView()
@@ -528,7 +528,7 @@ class ViewsController extends Controller
         }
 
 
-        return redirect('/views/video')->with('success', 'Video View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Video View Berasil diUbah!');
     }
 
     public function videoUpdate(Request $request)
@@ -579,7 +579,7 @@ class ViewsController extends Controller
             Views::create($dataLink);
         }
 
-        return redirect('/views/video')->with('success', 'Video View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Video View Berasil diUbah!');
     }
 
     public function ContactView()
@@ -649,7 +649,7 @@ class ViewsController extends Controller
         }
 
 
-        return redirect('/views/contact')->with('success', 'Contact View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Contact View Berasil diUbah!');
     }
 
     public function ContactUpdate(Request $request)
@@ -704,7 +704,7 @@ class ViewsController extends Controller
             Views::create($dataPhone);
         }
 
-        return redirect('/views/contact')->with('success', 'Contact View Berasil diUbah!');
+        return redirect('/views')->with('success', 'Contact View Berasil diUbah!');
     }
 
     public function BlogView()
@@ -725,7 +725,7 @@ class ViewsController extends Controller
 
         Views::create($validatedData);
 
-        return redirect('/views/blog')->with('success', 'Blog Tittle Berasil diUbah!');
+        return redirect('/views')->with('success', 'Blog Tittle Berasil diUbah!');
     }
 
     public function BlogUpdate(Request $request, Views $views)
@@ -740,6 +740,6 @@ class ViewsController extends Controller
         $views->update(['active' => false]);
         Views::create($validatedData);
 
-        return redirect('/views/blog')->with('success', 'Blog Tittle Berasil diUbah!');
+        return redirect('/views')->with('success', 'Blog Tittle Berasil diUbah!');
     }
 }

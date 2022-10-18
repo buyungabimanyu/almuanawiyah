@@ -2,6 +2,12 @@
 
 @section('container')
 
+@if (session()->has('success'))
+  <div class="alert alert-success" role="alert">
+    {{ session('success') }}
+  </div>
+@endif
+
 <!-- Home -->
 <div id="home" class="hero-area">
 
