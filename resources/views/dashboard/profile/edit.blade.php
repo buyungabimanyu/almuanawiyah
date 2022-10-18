@@ -101,7 +101,7 @@
           @if (auth()->user()->image)
               <img class="img-fluid card-img-top img-thumbnail" src="{{ asset('assets/' . auth()->user()->image) }}" alt="...">
           @else                
-              <img class="img-fluid card-img-top img-thumbnail" src="{{ asset('img/default-avatar.png')}}" alt="...">
+              <img class="img-fluid card-img-top img-thumbnail" src="{{ asset('assets/main/default-avatar.png')}}" alt="...">
           @endif
           <div class="card-body">
             <h5 class="title">{{ auth()->user()->name }}</h5>
