@@ -54,6 +54,7 @@
     
           </tbody>
         </table>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
       </div>
 
         @break
@@ -87,6 +88,7 @@
               @enderror
             </div>
             <button type="submit" class="btn btn-primary">Create new courses</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
           </form>
           <script src="{{ asset('js') }}/ddSlick.js"></script>
           <script>
@@ -130,7 +132,8 @@
                   </div>
               @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Create new courses</button>
+            <button type="submit" class="btn btn-primary">Save courses</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
           </form>
           <script src="{{ asset('js') }}/ddSlick.js"></script>
           <script>
@@ -177,7 +180,7 @@
             </div>
             
               
-            <button type="submit" class="btn btn-primary btn-round ">{{__('Change Why View')}}</button>
+            <button type="submit" class="btn btn-primary btn-round ">{{__('Change Why View')}}</button><a class="btn btn-secondary" href="{{ route('views') }}">Back</a>
             </form>
    @endswitch
 @endsection

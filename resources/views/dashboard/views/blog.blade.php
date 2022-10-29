@@ -32,6 +32,7 @@
 
   
 <button type="submit" class="btn btn-primary btn-round ">{{__('Change Blog Title')}}</button>
+<a class="btn btn-secondary" href="{{ route('views') }}">Back</a>
 </form>
 
 @endsection

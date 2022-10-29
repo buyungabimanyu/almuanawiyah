@@ -32,6 +32,7 @@
                 </div>
             @endif
             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+            <span>1600x900 pixel</span>
             @error('image')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -40,7 +41,7 @@
         </div>
 
           
-        <button type="submit" class="btn btn-primary btn-round ">{{__('Change Main Header')}}</button>
+        <button type="submit" class="btn btn-primary btn-round ">{{__('Change Main Header')}}</button><a class="btn btn-secondary" href="{{ route('views') }}">Back</a>
     </form>
 
     <script>

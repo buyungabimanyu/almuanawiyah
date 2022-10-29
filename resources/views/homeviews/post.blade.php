@@ -47,7 +47,7 @@
                             {!! $post->body !!}
 						</div>
 						<!-- /blog post -->
-
+{{-- 
 						<!-- blog share -->
 						<div class="blog-share">
 							<h4>Share This Post:</h4>
@@ -55,7 +55,7 @@
 							<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
 							<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
 						</div>
-						<!-- /blog share -->
+						<!-- /blog share --> --}}
 
 					</div>
 					<!-- /main blog -->

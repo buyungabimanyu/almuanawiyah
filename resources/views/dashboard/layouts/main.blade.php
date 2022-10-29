@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>{{ App\Models\Setting::title() }} | {{ $title }}</title>
-    <link rel="shortcut icon" href="{{ asset('assets/' . App\Models\Setting::icon()) }}" type="image/x-icon">
+    <title>{{ (App\Models\Setting::title() !== '') ? App\Models\Setting::title() : 'Almuanawiyah' }} | {{ $title }}</title>
+    <link rel="shortcut icon" href="{{ asset('assets/' . App\Models\Setting::logo()) }}" type="image/x-icon">
 
     
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="{{ asset('css/bootstrap-dashboard.min.css') }}" rel="stylesheet">
+   
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;

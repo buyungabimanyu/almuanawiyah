@@ -58,12 +58,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('contactus*') ? 'active' : '' }}" aria-current="page" href="{{ route('contactus') }}">
-              <span data-feather="archive" class="align-text-bottom"></span>
-              Email Sender
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link {{ Request::is('views*') ? 'active' : '' }}" aria-current="page" href="{{ route('views') }}">
               <span data-feather="layout" class="align-text-bottom"></span> Views
             </a>

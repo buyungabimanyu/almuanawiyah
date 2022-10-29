@@ -38,8 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/allposts/{post:slug}', ['as' => 'allposts.show', 'uses' => 'AllPostsController@show']);
 		Route::delete('/allposts/{post:slug}', ['as' => 'allposts.destroy', 'uses' => 'AllPostsController@destroy']);
 
-		Route::get('/contactus', ['as' => 'contactus', 'uses' => 'ContactController@index']);
-		
 		Route::get('/views', ['as' => 'views', 'uses' => 'ViewsController@index']);
 		Route::get('/views/main', ['as' => 'mainview', 'uses' => 'ViewsController@MainView']);
 		Route::get('/views/home', ['as' => 'homeview', 'uses' => 'ViewsController@HomeView']);

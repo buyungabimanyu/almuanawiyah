@@ -11,6 +11,7 @@ class HomeController extends Controller
         return view('homeviews.home', [
             'title' => 'Home',
             'active' => 'Home',
+            'request' => '',
             'courses' => Courses::all(),
             'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
         ]);
@@ -41,6 +42,7 @@ class HomeController extends Controller
         return view('homeviews.posts', [
             "title" => Views::blogTitle() . $title,
             "active" => "blogposts",
+            'request' => 'blogposts',
             "categories" => Category::all(),
             "posts" => Post::latest()->filter( request( ['search', 'category', 'author'] ) )->paginate(6)->withQueryString()
         ]);
@@ -49,8 +51,9 @@ class HomeController extends Controller
     public function blogpost(Post $post)
     {
         return view('homeviews.post', [
-            "title" => "Single Post",
+            "title" => $post->title,
             "active" => "blogposts",
+            'request' => 'post',
             "categories" => Category::all(),
             "post" => $post
         ]);

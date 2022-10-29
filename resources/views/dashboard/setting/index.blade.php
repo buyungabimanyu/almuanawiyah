@@ -106,6 +106,7 @@
                             <img class="img-preview img-fluid col-sm-4 mb-3">
                         @endif
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                        <span>220x60 pixel</span>
                         @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -122,6 +123,7 @@
                             <img class="icon-preview img-fluid col-sm-4 mb-3">
                         @endif
                         <input class="form-control @error('icon') is-invalid @enderror" type="file" id="icon" name="icon" onchange="previewIcon()">
+                        <span>220x60 pixel</span>
                         @error('icon')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -145,6 +147,7 @@
                         <label for="image" class="form-label">Logo</label>
                         <img class="img-preview img-fluid col-sm-5 mb-3">
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                        <span>220x60 pixel</span>
                         @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -156,6 +159,7 @@
                         <label for="icon" class="form-label">FavIcon</label>
                         <img class="icon-preview img-fluid col-sm-3 mb-3">
                         <input class="form-control @error('icon') is-invalid @enderror" type="file" id="icon" name="icon" onchange="previewIcon()">
+                        <span>220x60 pixel</span>
                         @error('icon')
                             <div class="invalid-feedback">
                                 {{ $message }}

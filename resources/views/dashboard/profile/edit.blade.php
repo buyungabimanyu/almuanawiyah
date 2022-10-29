@@ -45,6 +45,7 @@
                       <input type="hidden" name="oldImage" value="{{ auth()->user()->image }}">
                       <img class="img-preview img-fluid col-sm-5 mb-3">
                       <input class="form-control" type="file" id="image" name="image" onchange="previewImage()">
+                      <span>200x200 pixel</span>
                       @include('alerts.feedback', ['field' => 'image'])
                     </div>
                   </div>

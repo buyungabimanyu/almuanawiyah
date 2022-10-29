@@ -48,6 +48,7 @@
           <label for="image" class="form-label">Post Image</label>
           <img class="img-preview img-fluid col-sm-5 mb-3">
           <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+          <span>825x550 pixel</span>
           @error('image')
               <div class="invalid-feedback">
                 {{ $message }}

@@ -57,7 +57,7 @@
 </div>
 
   
-<button type="submit" class="btn btn-primary btn-round ">{{__('Change video View')}}</button>
+<button type="submit" class="btn btn-primary btn-round ">{{__('Change video View')}}</button><a class="btn btn-secondary" href="{{ route('views') }}">Back</a>
 </form>
 
 <script>
