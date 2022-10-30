@@ -26,8 +26,12 @@ class Views extends Model
 
     public function mainHeader() {
         $main = self::select('image')->where('parent_id', 1)->where('active', true)->first();
-        if($main == true ){
-            return $main->image;
+        if($main == true){
+            if($main->image !== '' || $main->image !== null){
+                return $main->image;
+            } else {
+                return 'main/home-background.jpg';
+            }
         } else {
             return 'main/home-background.jpg';
         }
@@ -152,7 +156,11 @@ class Views extends Model
     {
         $play = self::select('body')->where('parent_id', 6)->where('children_id', 4)->where('active', true)->first();
         if($play == true){
-            return $play->body;
+            if($play->body !== '' || $play->body !== null){
+                return $play->body;
+            } else{
+                return 'https://www.youtube.com/embed/icNSHX8QPLU?controls=1&amp;rel=0&amp;playsinline=0&amp;modestbranding=0&amp;autoplay=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Falmuanawiyah.com&amp;widgetid=1';
+            }
         } else {
             return 'https://www.youtube.com/embed/icNSHX8QPLU?controls=1&amp;rel=0&amp;playsinline=0&amp;modestbranding=0&amp;autoplay=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Falmuanawiyah.com&amp;widgetid=1';
         }
@@ -182,9 +190,13 @@ class Views extends Model
     {
         $email = self::select('body')->where('parent_id', 7)->where('children_id', 3)->where('active', true)->first();
         if($email == true){
-            return $email->body;
+            if($email->body !== '' || $email->body !== null){
+                return $email->body;
+            } else {
+                return 'adminweb@almuanawiyah.com';
+            }
         } else {
-            return 'example@example.com';
+            return 'adminweb@almuanawiyah.com';
         }
     }
 
@@ -192,7 +204,11 @@ class Views extends Model
     {
         $phone = self::select('body')->where('parent_id', 7)->where('children_id', 4)->where('active', true)->first();
         if($phone == true){
-            return $phone->body;
+            if($phone->body !== '' || $phone->body !== null){
+                return $phone->body;
+            } else {
+                return '085645754384';
+            }
         } else {
             return '085645754384';
         }
@@ -202,7 +218,11 @@ class Views extends Model
     {
         $address = self::select('body')->where('parent_id', 7)->where('children_id', 5)->where('active', true)->first();
         if($address == true){
-            return $address->body;
+            if($address->body !== '' || $address->body !== null){
+                return $address->body;
+            } else {
+                return 'Jln. Sambisari RT 8/RW2 Desa Ceweng Kec. Diwek Kab. Jombang (samping Masjid Baitul Mu\'min)';
+            }
         } else {
             return 'Jln. Sambisari RT 8/RW2 Desa Ceweng Kec. Diwek Kab. Jombang (samping Masjid Baitul Mu\'min)';
         }

@@ -13,8 +13,12 @@ class Setting extends Model
 
     public function title(){
         $title = self::select('body')->where('parent_id', 1)->where('active', true)->first();
-        if($title == true ){
-            return $title->body;
+        if($title == true){
+            if($title->body !== '' || $title !== null){
+                return $title->body;
+            } else {
+                return 'Al-Muanawiyah';
+            }
         } else {
             return 'Al-Muanawiyah';
         }
@@ -22,8 +26,12 @@ class Setting extends Model
         
     public function logo(){
         $img = self::select('image')->where('parent_id', 1)->where('active', true)->first();
-        if($img == true ){
-            return $img->image;
+        if($img == true){
+            if($img->image !== '' || $img->image !== null){
+                return $img->image;
+            } else {
+                return 'main/almuanawiyah.jpg';
+            }
         } else {
             return 'main/almuanawiyah.jpg';
         }
@@ -32,7 +40,11 @@ class Setting extends Model
     public function icon(){
         $icon = self::select('icon')->where('parent_id', 1)->where('active', true)->first();
         if($icon == true ){
-            return $icon->icon;
+            if( $icon->icon !== '' || $icon->icon !== null ){
+                return $icon->icon;
+            } else {
+                return 'main/almuanawiyah.jpg';
+            }
         } else {
             return 'main/almuanawiyah.jpg';
         }
