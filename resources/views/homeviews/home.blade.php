@@ -124,17 +124,17 @@
 								<!-- single course -->
 								<div class="col-md-3 col-sm-6 col-xs-6">
 									<div class="course">
-										<div class="course-img">
+										<a href="{{ route('homecourses', $item->slug) }}" class="course-img">
 											@if ($item->image)
 												<img src="{{ asset('assets/' . $item->image) }}" alt="{{ $item->title }}">
 											@else
 												<img src="{{ asset('assets/main') }}/course01.jpg" alt="{{ $item->title }}">
 											@endif
 											<i class="course-link-icon fa fa-link"></i>
-										</div>
-										<div class="course-title">
+										</a>
+										<a href="{{ route('homecourses', $item->slug) }}" class="course-title">
 											{{ $item->title }}
-										</div>
+										</a>
 										<div class="course-details">
 											<span class="course-category">{{ $item->category->name }}</span>
 										</div>
@@ -146,11 +146,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course01.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
+									<a class="course-title" href="{{ route('courseshome') }}">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
 									<div class="course-details">
 										<span class="course-category">Business</span>
 										<span class="course-price course-free">Free</span>
@@ -162,11 +162,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course02.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">Introduction to CSS </a>
+									<a class="course-title" href="{{ route('courseshome') }}">Introduction to CSS </a>
 									<div class="course-details">
 										<span class="course-category">Web Design</span>
 										<span class="course-price course-premium">Premium</span>
@@ -178,11 +178,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course03.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">The Ultimate Drawing Course | From Beginner To Advanced</a>
+									<a class="course-title" href="{{ route('courseshome') }}">The Ultimate Drawing Course | From Beginner To Advanced</a>
 									<div class="course-details">
 										<span class="course-category">Drawing</span>
 										<span class="course-price course-premium">Premium</span>
@@ -193,11 +193,11 @@
 
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course04.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">The Complete Web Development Course</a>
+									<a class="course-title" href="{{ route('courseshome') }}">The Complete Web Development Course</a>
 									<div class="course-details">
 										<span class="course-category">Web Development</span>
 										<span class="course-price course-free">Free</span>
@@ -209,11 +209,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course05.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
+									<a class="course-title" href="{{ route('courseshome') }}">PHP Tips, Tricks, and Techniques</a>
 									<div class="course-details">
 										<span class="course-category">Web Development</span>
 										<span class="course-price course-free">Free</span>
@@ -225,11 +225,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course06.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">All You Need To Know About Web Design</a>
+									<a class="course-title" href="{{ route('courseshome') }}">All You Need To Know About Web Design</a>
 									<div class="course-details">
 										<span class="course-category">Web Design</span>
 										<span class="course-price course-free">Free</span>
@@ -241,11 +241,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course07.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">How to Get Started in Photography</a>
+									<a class="course-title" href="{{ route('courseshome') }}">How to Get Started in Photography</a>
 									<div class="course-details">
 										<span class="course-category">Photography</span>
 										<span class="course-price course-free">Free</span>
@@ -258,11 +258,11 @@
 							<!-- single course -->
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
-									<a href="#" class="course-img">
+									<a href="{{ route('courseshome') }}" class="course-img">
 										<img src="{{ asset('assets/main') }}/course08.jpg" alt="">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
-									<a class="course-title" href="#">Typography From A to Z</a>
+									<a class="course-title" href="{{ route('courseshome') }}">Typography From A to Z</a>
 									<div class="course-details">
 										<span class="course-category">Typography</span>
 										<span class="course-price course-free">Free</span>

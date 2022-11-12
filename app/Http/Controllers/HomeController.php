@@ -55,7 +55,30 @@ class HomeController extends Controller
             "active" => "blogposts",
             'request' => 'post',
             "categories" => Category::all(),
-            "post" => $post
+            "post" => $post,
+            "switch" => 'post'
+        ]);
+    }
+
+    public function courseshome()
+    {
+        return view('homeviews.post', [
+            "title" => 'courseshome',
+            "active" => "Home",
+            'request' => 'post',
+            "switch" => ''
+        ]);
+    }
+
+    public function courses(Courses $courses)
+    {
+        return view('homeviews.post', [
+            "title" => $courses->title,
+            "active" => "Home",
+            'request' => 'post',
+            "categories" => Category::all(),
+            "courses" => $courses,
+            "switch" => 'courses'
         ]);
     }
 }

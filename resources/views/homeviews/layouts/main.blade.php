@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ (App\Models\Setting::title() !== '') ? App\Models\Setting::title() : 'Almuanawiyah' }} {{ ($title == 'Home') ? '' : '| ' . $title }}</title>
+    <title>{{ App\Models\Setting::title() }} {{ ($title == 'Home') ? '' : '| ' . $title }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/' . App\Models\Setting::logo()) }}" type="image/x-icon">
     
 		<!-- Google font -->

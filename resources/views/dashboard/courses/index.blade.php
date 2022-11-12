@@ -22,6 +22,7 @@
           <th scope="col">image</th>
           <th scope="col">Title</th>
           <th scope="col">Category</th>
+          <th scope="col">Body</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -33,13 +34,14 @@
             <td>{{ $loop->iteration }}</td>
             <td>
                 @if ($data->image)
-                <img src="{{ asset('/storage/' . $data->image) }}" alt="" style="max-width: 80px; border-radiu: 100px">
+                <img src="{{ asset('assets/' . $data->image) }}" alt="" style="max-width: 80px; border-radiu: 100px">
               @else                
-                <img src="{{asset('img/courses06.jpg')}}" alt="" style="max-width: 80px; border-radiu: 100px">
+                <img src="{{asset('assets/main/courses06.jpg')}}" alt="" style="max-width: 80px; border-radiu: 100px">
               @endif
             </td>
             <td>{{ $data->title }}</td>
             <td>{{ $data->category->name }}</td>
+            <td>{!! $data->body !!}</td>
             <td>
               <a href="{{ route('courses.edit', $data->id) }}" class="badge bg-warning">
                 <span data-feather="edit"></span>
@@ -64,6 +66,7 @@
       </tbody>
     </table>
   </div>
+  <a class="btn btn-secondary" href="{{ route('views') }}">Back</a>
 
 @if (isset($create))    
   <!-- Modal -->
@@ -87,11 +90,22 @@
                   </div>
               @enderror
             </div>
+
+            <div class="mb-3">
+              <label for="slug" class="form-label">Slug</label>
+              <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}">
+              @error('slug')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
     
             <div class="mb-3">
               <label for="image" class="form-label">Courses Image</label>
               <img class="img-preview img-fluid col-sm-5 mb-3">
               <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+              <span>825x550 pixel</span>
               @error('image')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -113,6 +127,17 @@
                 <label for="category">Category</label>
               </div>
             
+              <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                @error('body')
+                  <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                  </div>
+                @enderror
+                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+                <trix-editor input="body"></trix-editor>
+              </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="history.back()">Close</button>
@@ -126,7 +151,21 @@
   <script>
   $(document).ready(function(){
     $("#create").modal('show');
-  });  
+  });
+
+  const title = document.querySelector('#title');
+  const slug = document.querySelector('#slug');
+
+  title.addEventListener('change', function(){
+      fetch('/checkSlug?title=' + title.value)
+      .then(response => response.json())
+      .then(data => slug.value = data.slug);
+  });
+
+  document.addEventListener('trix-file-accept', function(e)
+  {
+    e.preventDefault();
+  });
 
   function previewImage()
   {
@@ -172,12 +211,22 @@
                   </div>
               @enderror
             </div>
+
+            <div class="mb-3">
+              <label for="slug" class="form-label">Slug</label>
+              <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $edit->slug) }}">
+              @error('slug')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
     
             <div class="mb-3">
               <label for="image" class="form-label">Courses Image</label>
               <input type="hidden" name="oldImage" value="{{ $edit->image }}">
               @if ($edit->image)
-                <img src="{{ asset('storage/' . $edit->image) }}" class="img-preview img-fluid col-sm-5 mb-3 d-block">
+                <img src="{{ asset('assets/' . $edit->image) }}" class="img-preview img-fluid col-sm-5 mb-3 d-block">
               @else
                 <img class="img-preview img-fluid col-sm-5 mb-3">
               @endif
@@ -202,8 +251,19 @@
                   
                 </select>
                 <label for="category">Category</label>
-              </div>
+            </div>
             
+            <div class="mb-3">
+              <label for="body" class="form-label">Body</label>
+              @error('body')
+                <div class="alert alert-danger" role="alert">
+                  {{ $message }}
+                </div>
+              @enderror
+              <input id="body" type="hidden" name="body" value="{{ old('body', $edit->body) }}">
+              <trix-editor input="body"></trix-editor>
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="history.back()">Close</button>
@@ -217,6 +277,20 @@
   <script>
   $(document).ready(function(){
     $("#edit").modal('show');
+  });
+
+  const title = document.querySelector('#title');
+  const slug = document.querySelector('#slug');
+
+  title.addEventListener('change', function(){
+      fetch('/checkSlug?title=' + title.value)
+      .then(response => response.json())
+      .then(data => slug.value = data.slug);
+  });
+
+  document.addEventListener('trix-file-accept', function(e)
+  {
+    e.preventDefault();
   });
 
   function previewImage()

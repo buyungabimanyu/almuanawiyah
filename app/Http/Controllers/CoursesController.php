@@ -30,8 +30,10 @@ class CoursesController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
+            'slug' => 'required|unique:courses',
             'category_id' => 'required',
-            'image' => 'image|file|max:2048'
+            'image' => 'image|file|max:2048',
+            'body' => 'required'
         ]);
 
         if($request->file('image'))
@@ -41,7 +43,7 @@ class CoursesController extends Controller
 
         Courses::create($validatedData);
 
-        return redirect('/courses')->with('success', 'New Courses has been added!!!');
+        return redirect('/views/courses')->with('success', 'New Courses has been added!!!');
     }
     
     public function edit(Courses $courses)
@@ -57,11 +59,19 @@ class CoursesController extends Controller
 
     public function update(Request $request, Courses $courses)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
-            'image' => 'image|file|max:2048'
-        ]);
+            'image' => 'image|file|max:2048',
+            'body' => 'required'
+        ];
+        
+        if($request->slug != $courses->slug)
+        {
+            $rules['slug'] = 'required|unique:courses|min:3';
+        };
+
+        $validatedData = $request->validate($rules);
 
         if($request->file('image'))
         {
@@ -73,7 +83,7 @@ class CoursesController extends Controller
 
         $courses->update($validatedData);
 
-        return redirect('/courses')->with('success', 'The Courses has been updated!!!');
+        return redirect('/views/courses')->with('success', 'The Courses has been updated!!!');
     }
     
     public function destroy(Courses $courses)
@@ -83,6 +93,6 @@ class CoursesController extends Controller
         };
         $courses->delete();
         
-        return redirect('/courses')->with('success', 'The Courses has been deleted!!!');
+        return redirect('/views/courses')->with('success', 'The Courses has been deleted!!!');
     }
 }

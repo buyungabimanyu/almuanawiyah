@@ -11,6 +11,10 @@ Route::get('/blogposts', ['as' => 'blogposts', 'uses' => 'HomeController@blogpos
 // Halaman Single Post
 Route::get('/blogposts/{post:slug}', ['as' => 'blogpost', 'uses' => 'HomeController@blogpost'] );
 
+// Halaman Courses
+Route::get('/courses', ['as' => 'courseshome', 'uses' => 'HomeController@courseshome']);
+Route::get('/courses/{courses:slug}', ['as' => 'homecourses', 'uses' => 'HomeController@courses']);
+
 Route::post('/contact-us', ['as' => 'contact.us.store', 'uses' => 'ContactController@store']);
 
 Auth::routes(['verify' => true]);
