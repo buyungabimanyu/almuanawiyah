@@ -330,7 +330,7 @@
 							<!-- feature -->
 							<div class="col-md-4">
 								<div class="feature">
-									<i class="feature-icon {!! $item->image !!}"></i>
+									<i class="feature-icon fa {{ ($item->image) ? $item->font->icon : 'fa-hashtag' }}"></i>
 									<div class="feature-content">
 										<h4>{{ $item->title }}</h4>
 										<p>{{ $item->body }}</p>
@@ -443,12 +443,12 @@
 					<div class="col-md-5 col-md-offset-1">
 						<h4>Contact Information</h4>
 						<ul class="contact-details">
-							<li><i class="fa fa-envelope"></i>{{ App\Models\Views::contactEmail() }}</li>
+							<li><i class="fa fa-envelope"></i> {{ App\Models\Views::contactEmail() }}</li>
 							<li>
 								<a href="http://wa.me/{{ App\Models\Views::contactPhone() }}" target="_blank" rel="noopener noreferrer">
-									<i class="fa fa-phone"></i>{{ App\Models\Views::contactPhone() }}</li>
+									<i class="fa fa-phone"></i> {{ App\Models\Views::contactPhone() }}</li>
 								</a>
-							<li><i class="fa fa-map-marker"></i>{{ App\Models\Views::contactAddress() }}</li>
+							<li><i class="fa fa-map-marker"></i> {{ App\Models\Views::contactAddress() }}</li>
 						</ul>
 
 						<!-- contact map -->

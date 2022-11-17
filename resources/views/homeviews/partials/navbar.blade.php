@@ -6,8 +6,8 @@
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo white-text" href="{{ route('home') }}">
-							<img src="{{ asset('assets/' . App\Models\Setting::logo()) }}" alt="{{ (App\Models\Setting::title()) ? App\Models\Setting::title() : 'Al-Muanawiyah' }}">
-							{{ (App\Models\Setting::title()) ? App\Models\Setting::title() : 'Al-Muanawiyah' }}
+							<img src="{{ asset('assets/' . App\Models\Setting::logo()) }}">
+							{{ App\Models\Setting::title() }}
 						</a>
 					</div>
 					<!-- /Logo -->
