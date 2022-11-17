@@ -56,7 +56,7 @@
                       </div>
                       <h4><a href="{{ route('blogpost', $post->slug) }}">{{ $post->title }}</a></h4>
                       <hr style="margin: 0; padding:0">
-                      <h5>{{ $post->excerpt }}</h5>
+                      <h5><a href="{{ route('blogpost', $post->slug) }}">{{ $post->excerpt }}</a></h5>
                       <div class="blog-meta">
                         <span class="blog-meta-author">By: <a href="/blogposts?author={{ $post->author->username }}">{{ $post->author->name }}</a></span>
                         <div class="pull-right">

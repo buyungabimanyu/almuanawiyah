@@ -12,7 +12,7 @@
 						@if (App\Models\Setting::footer()->count())
 							<ul class="footer-social">
 								@foreach (App\Models\Setting::footer() as $item)
-									<li><a href="{{ $item->body }}" class="{{ $item->font->body }}"><i class="fa-brands {{ $item->font->icon }}"></i></a></li>
+									<li><a href="{{ $item->body }}" target="_blank" class="{{ $item->font->body }}"><i class="fa-brands {{ $item->font->icon }}"></i></a></li>
 								@endforeach
 							</ul>	
 						@else
