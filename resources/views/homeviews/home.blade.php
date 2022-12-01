@@ -2,6 +2,107 @@
 
 @section('container')
 
+@if ($information['body'] == 'on' || session('success') )
+<div class="modal fade" id="info">
+	<div class="modal-dialog">
+		@if ($informationdata->count())
+			<div class="modal-content" style="background: rgba( 0, 0, 0, 0.1 )">
+				<div class="modal-header">
+					<div style="position: relative; clear:both">
+						<div style="float: left">
+							<h4 style="color: azure">Information</h4>
+						</div>
+						<div style="float: right">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div id="main-info" class="splide" role="group" aria-label="Splide Basic HTML Example">
+						<div class="splide__track">
+							<ul class="splide__list">
+								@foreach ($informationdata as $info)
+									@if ($info->ppdb == 'on')
+										<li class="splide__slide">
+											<a href="#cta">
+												<img src="{{ asset('assets/' . $info->body) }}" data-splide-interval="3000">
+											</a>
+										</li>
+									@else									
+										<li class="splide__slide">
+											<img src="{{ asset('assets/' . $info->body) }}" data-splide-interval="3000">
+										</li>
+									@endif
+								@endforeach
+							</ul>
+						</div>
+					</div>
+					<div id="thumbnail-info" class="splide">
+						<div class="splide__track">
+							<ul class="splide__list">
+								@foreach ($informationdata as $info)
+									<li class="splide__slide">
+										<img src="{{ asset('assets/' . $info->body) }}">
+									</li>
+									<?php if($info->ppdb == 'on'){$ppdb = 'on';} ?>
+								@endforeach
+							</ul>
+						</div>
+					</div>
+				</div>
+				@if (session('success'))
+					<div class="modal-footer">
+						<p style="color: azure">{{ session('success') }}</p>
+					</div>
+				@endif
+			</div>			
+		@else
+			<div style="position: relative; clear:both">
+				<div style="float: left">
+					<h4 style="color: azure">{{ session('success') }}</h4>
+				</div>
+				<div style="float: right">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+				</div>
+			</div>
+		@endif
+	</div>
+</div>
+<script>
+	$('#info').modal('show');
+	document.addEventListener( 'DOMContentLoaded', function () {
+		var main = new Splide( '#main-info', {
+			type      : 'fade',
+			rewind    : true,
+			pagination: false,
+			arrows    : false,
+			autoplay: true
+		} );
+
+		var thumbnails = new Splide( '#thumbnail-info', {
+			fixedWidth  : 100,
+			fixedHeight : 60,
+			gap         : 10,
+			rewind      : true,
+			pagination  : false,
+			isNavigation: true,
+			arrows    : false,
+			breakpoints : {
+			600: {
+				fixedWidth : 60,
+				fixedHeight: 44,
+			},
+			},
+		} );
+		main.sync( thumbnails );
+		main.mount();
+		thumbnails.mount();
+	});
+
+</script>
+@endif
+
+
 		<!-- Home -->
 		<div id="home" class="hero-area">
 
@@ -283,34 +384,36 @@
 
 		</div>
 		<!-- /Courses -->
+		@if ($ppdb == 'on')
+			<!-- Call To Action -->
+			<div id="cta" class="section">
 
-		{{-- <!-- Call To Action -->
-		<div id="cta" class="section">
+				<!-- Backgound Image -->
+				<div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('assets/' . App\Models\Views::ppdbImg()) }}"></div>
+				<!-- /Backgound Image -->
 
-			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('assets/main') }}/cta1-background.jpg)"></div>
-			<!-- /Backgound Image -->
+				<!-- container -->
+				<div class="container">
 
-			<!-- container -->
-			<div class="container">
+					<!-- row -->
+					<div class="row">
 
-				<!-- row -->
-				<div class="row">
+						<div class="col-md-6">
+							<h2 class="white-text">{{ App\Models\Views::ppdbTitle() }}</h2>
+							<p class="lead white-text">{{ App\Models\Views::ppdbBody() }}</p>
+							<a class="main-button icon-button" href="#pendaftaranppdb" data-toggle="modal">Daftar Sekarang!</a>
+							
+						</div>
 
-					<div class="col-md-6">
-						<h2 class="white-text">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis.</h2>
-						<p class="lead white-text">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
-						<a class="main-button icon-button" href="#">Get Started!</a>
 					</div>
-
+					<!-- /row -->
+			
 				</div>
-				<!-- /row -->
-
+				<!-- /container -->
+				
 			</div>
-			<!-- /container -->
-
-		</div>
-		<!-- /Call To Action --> --}}
+			<!-- /Call To Action -->
+		@endif
 
 		<!-- Why us -->
 		<div id="why-us" class="section">
@@ -422,11 +525,6 @@
 					<div class="col-md-6">
 						<div class="contact-form">
 							<h4>Send A Message</h4>
-							@if (session()->has('success'))
-								<div class="alert alert-success" role="alert">
-									{{ session('success') }}
-								</div>
-							@endif
 							<form action="{{ route('contact.us.store') }}" method="POST">
 								@csrf
 								<input class="input" type="text" name="name" placeholder="Name">
@@ -466,5 +564,33 @@
 
 		</div>
 		<!-- /Contact -->
+
+	@if ($ppdb == 'on')
+		<div class="modal fade" id="pendaftaranppdb">
+			<div class="modal-dialog modal-lg">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h4>Pendaftaran PPDB</h4>
+				</div>
+				<div class="modal-body">
+					<div class="contact-form" style="color: black">					
+						<form action="{{ route('pendaftaranppdb') }}" method="post">
+						@csrf
+						<input class="input" type="text" name="nama_siswa" placeholder="Nama Siswa">
+						<input class="input" type="text" name="asal_sekolah" placeholder="Asal Sekolah">
+						<textarea class="input" name="alamat" placeholder="Alamat"></textarea>
+						<input class="input" type="email" name="email" placeholder="Email">
+						<input class="input" type="text" name="no_tlp" placeholder="No Telepon/WhatsApp">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Daftar</button>
+					</form>
+				  	<button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+				</div>
+			  </div>
+			</div>
+		</div>
+	@endif
 
 @endsection

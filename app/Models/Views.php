@@ -236,4 +236,32 @@ class Views extends Model
             return 'Posts';
         }
     }
+
+    public function ppdbTitle(){
+        $title = self::select('body')->where('parent_id', 9)->where('children_id', 1)->where('active', true)->first();
+        if($title == true){
+            return $title->body;
+        } else {
+            return 'Ceteros fuisset mei no, soleat epicurei adipiscing ne vis.';
+        }
+    }
+
+    public function ppdbBody(){
+        $text = self::select('body')->where('parent_id', 9)->where('children_id', 2)->where('active', true)->first();
+        if($text == true){
+            return $text->body;
+        } else {
+            return 'Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.';
+        }
+    }
+
+    public function ppdbImg(){
+        $img = self::select('image')->where('parent_id', 9)->where('children_id', 3)->where('active', true)->first();
+        if($img == true){
+            return $img->image;
+        } else {
+            return 'main/cta1-background.jpg';
+        }
+    }
+
 }

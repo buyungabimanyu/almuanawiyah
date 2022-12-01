@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Category, Courses, Post, User, Views};
+use App\Models\{Category, Courses, Information, Post, User, Views};
 
 class HomeController extends Controller
 {
@@ -13,7 +13,10 @@ class HomeController extends Controller
             'active' => 'Home',
             'request' => '',
             'courses' => Courses::all(),
-            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get()
+            'alasan' => Views::where('parent_id', 5)->where('children_id', 3)->where('active', true)->get(),
+            'ppdb' => Views::select('body')->where('parent_id', 9)->where('children_id', 1)->where('active', true)->first(),
+            'information' => Information::select('body')->where('parent_id', 1)->first(),
+            'informationdata' => Information::where('parent_id', 2)->get()
         ]);
     }
 

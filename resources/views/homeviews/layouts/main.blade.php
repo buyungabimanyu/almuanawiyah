@@ -12,10 +12,17 @@
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css"/>
+    <script type="text/javascript" src="{{ asset('js') }}/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js') }}/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js') }}/bootstrap.min.js"></script>
 
 		<!-- Font Awesome Icon -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+
+		<!-- Splide JS -->
+    <link rel="stylesheet" href="{{ asset('css') }}/splide.min.css">
+    <script type="text/javascript" src="{{ asset('js') }}/splide.min.js"></script>
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{{ asset('css') }}/style.css"/>
@@ -30,8 +37,6 @@
     @include('homeviews.partials.footbar')
 
       <!-- jQuery Plugins -->
-      <script type="text/javascript" src="{{ asset('js') }}/jquery.min.js"></script>
-      <script type="text/javascript" src="{{ asset('js') }}/bootstrap.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
       <script type="text/javascript" src="{{ asset('js') }}/google-map.js"></script>
       <script type="text/javascript" src="{{ asset('js') }}/main.js"></script>

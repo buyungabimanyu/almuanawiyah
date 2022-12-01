@@ -46,6 +46,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link {{ Request::is('ppdb*') ? 'active' : '' }}" aria-current="page" href="{{ route('ppdb.index') }}">
+              <span data-feather="users" class="align-text-bottom"></span>
+              Peserta PPDB
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('information*') ? 'active' : '' }}" aria-current="page" href="{{ route('information.index') }}">
+              <span data-feather="users" class="align-text-bottom"></span>
+              Information
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" aria-current="page" href="{{ route('users.index') }}">
               <span data-feather="list" class="align-text-bottom"></span>
               Users List

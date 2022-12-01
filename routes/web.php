@@ -15,6 +15,8 @@ Route::get('/blogposts/{post:slug}', ['as' => 'blogpost', 'uses' => 'HomeControl
 Route::get('/courses', ['as' => 'courseshome', 'uses' => 'HomeController@courseshome']);
 Route::get('/courses/{courses:slug}', ['as' => 'homecourses', 'uses' => 'HomeController@courses']);
 
+Route::post('/pendaftaranppdb', ['as' => 'pendaftaranppdb', 'uses' => 'PpdbController@store']);
+
 Route::post('/contact-us', ['as' => 'contact.us.store', 'uses' => 'ContactController@store']);
 
 Auth::routes(['verify' => true]);
@@ -32,6 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 	
 	Route::group(['middleware' => 'admin'], function(){
+		Route::get('/ppdb', ['as' => 'ppdb.index', 'uses' => 'PpdbController@index']);
+
+		Route::resource('/information', 'InformationController')->only(['index','store', 'destroy']);
+		Route::post('/information/switch', ['as' => 'information.switch', 'uses' => 'InformationController@switch']);
+
 		Route::resource('/categories', 'CategoryController')->except('show');
 
 		Route::resource('/users', 'UsersController')->except('show');
@@ -52,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/views/video', ['as' => 'videoview', 'uses' => 'ViewsController@VideoView']);
 		Route::get('/views/contact', ['as' => 'contactview', 'uses' => 'ViewsController@ContactView']);
 		Route::get('/views/blog', ['as' => 'blogview', 'uses' => 'ViewsController@BlogView']);
+		Route::get('/views/ppdb', ['as' => 'ppdbview', 'uses' => 'ViewsController@ppdbView']);
 
 		Route::post('/views/main',['as' => 'main.store', 'uses' => 'ViewsController@MainStore']);
 		Route::put('/views/main/{views}',['as' => 'main.update', 'uses' => 'ViewsController@MainUpdate']);
@@ -76,6 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::post('/views/contact',['as' => 'contact.store', 'uses' => 'ViewsController@ContactStore']);
 		Route::put('/views/contact',['as' => 'contact.update', 'uses' => 'ViewsController@ContactUpdate']);
+
+		Route::post('/views/ppdb',['as' => 'ppdb.store', 'uses' => 'ViewsController@ppdbStore']);
+		Route::put('/views/ppdb',['as' => 'ppdb.update', 'uses' => 'ViewsController@ppdbUpdate']);
 
 		Route::resource('setting', 'SettingController')->except(['show', 'create', 'edit', 'destroy']);
 		Route::get('/setting/footer/create', ['as' => 'footer.create', 'uses' => 'SettingController@createFooter']);

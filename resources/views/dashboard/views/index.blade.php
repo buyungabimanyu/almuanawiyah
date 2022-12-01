@@ -295,33 +295,34 @@
   </div>
   <!-- /Courses -->
 
-{{-- <!-- Call To Action -->
+<!-- Call To Action -->
 <div id="cta" class="section">
 
-<!-- Backgound Image -->
-<div class="bg-image bg-parallax overlay" style="background-image:url(./img/cta1-background.jpg)"></div>
-<!-- /Backgound Image -->
+			<!-- Backgound Image -->
+			<div class="bg-image bg-parallax overlay" style="background-image:url({{ asset('assets/' . App\Models\Views::ppdbImg()) }}"></div>
+			<!-- /Backgound Image -->
 
-<!-- container -->
-<div class="container">
+			<!-- container -->
+			<div class="container">
 
-  <!-- row -->
-  <div class="row">
+				<!-- row -->
+				<div class="row">
 
-    <div class="col-md-6">
-      <h2 class="white-text">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis.</h2>
-      <p class="lead white-text">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
-      <a class="main-button icon-button" href="#">Get Started!</a>
-    </div>
+					<div class="col-md-6">
+						<h2 class="white-text">{{ App\Models\Views::ppdbTitle() }}</h2>
+						<p class="lead white-text">{{ App\Models\Views::ppdbBody() }}</p>
+						<a class="main-button icon-button" href="#pendaftaranppdb" data-toggle="modal">Daftar Sekarang!</a>
+						
+					</div>
 
-  </div>
-  <!-- /row -->
-
+				</div>
+				<!-- /row -->
+        
+			</div>
+			<!-- /container -->
 </div>
-<!-- /container -->
-
-</div>
-<!-- /Call To Action --> --}}
+<a class="btn btn-info text-center" href="{{ route('ppdbview') }}">Rubah Tampilan PPDB</a>
+<!-- /Call To Action -->
 
 <!-- Why us -->
 <div class="section">
@@ -480,5 +481,4 @@
 
 </div>
 <!-- /Contact -->
-
 @endsection

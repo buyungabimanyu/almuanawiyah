@@ -742,4 +742,88 @@ class ViewsController extends Controller
 
         return redirect('/views')->with('success', 'Blog Tittle Berasil diUbah!');
     }
+
+    public function ppdbView()
+    {
+        return view('dashboard.views.ppdb', [
+            'title' => 'Views PPDB',
+            'ppdbTitle' => Views::select('body')->where('parent_id', 9)->where('children_id', 1)->where('active', true)->first(),
+            'ppdbBody' => Views::select('body')->where('parent_id', 9)->where('children_id', 2)->where('active', true)->first(),
+            'image' => Views::select('body')->where('parent_id', 9)->where('children_id', 3)->where('active', true)->first()
+        ]);
+    }
+
+    public function ppdbStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'image' => 'nullable|image|file|max:2048'
+        ]);
+
+
+        $parent_id = 9;
+        if($validatedData['title']){
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+
+            Views::create($dataTitle);
+        }
+        if($validatedData['body']){
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+        if($request->file('image')){
+            $image['image'] = $request->file('image')->store('main');
+            $image['parent_id'] = $parent_id;
+            $image['children_id'] = 3;
+            Views::create($image);
+        }
+
+        return redirect('/views')->with('success', 'PPDB View Berasil diUbah!');
+    }
+
+    public function ppdbUpdate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'body' => 'nullable|max:255',
+            'image' => 'nullable|image|file|max:2048'
+        ]);
+
+        $parent_id = 9;
+        if($validatedData['title'] !== $request['oldTitle']){
+            Views::where('parent_id', $parent_id)->where('children_id', 1)->update(['active' => false]);
+            $dataTitle['body'] = $validatedData['title'];
+            $dataTitle['parent_id'] = $parent_id;
+            $dataTitle['children_id'] = 1;
+
+            Views::create($dataTitle);
+        }
+        if($validatedData['body'] !== $request['oldBody']){
+            Views::where('parent_id', $parent_id)->where('children_id', 2)->update(['active' => false]);    
+            $dataBody['body'] = $validatedData['body'];
+            $dataBody['parent_id'] = $parent_id;
+            $dataBody['children_id'] = 2;
+    
+            Views::create($dataBody);
+        }
+        if($request->file('image')){
+            $image['image'] = $request->file('image')->store('main');
+            $image['parent_id'] = $parent_id;
+            $image['children_id'] = 3;
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            };
+            Views::where('parent_id', $parent_id)->where('children_id', $image['children_id'])->update(['active' => false]);
+            Views::create($image);
+        }
+
+        return redirect('/views')->with('success', 'PPDB View Berasil diUbah!');
+    }
+
 }

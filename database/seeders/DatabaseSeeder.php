@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User,FontAwesome};
+use App\Models\{User,FontAwesome, Information, Views};
 
 class DatabaseSeeder extends Seeder
 {
@@ -162,5 +162,7 @@ class DatabaseSeeder extends Seeder
         foreach($dataicon as $icon){
             FontAwesome::create($icon);
         }
+
+        Information::create(['parent_id' => 1, 'body' => 'on']);
     }
 }
