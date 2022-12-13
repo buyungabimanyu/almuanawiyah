@@ -303,7 +303,7 @@
 			<!-- /Backgound Image -->
 
 			<!-- container -->
-			<div class="container">
+			<div class="container" style="left: 0;right:0; display:block; position:relative">
 
 				<!-- row -->
 				<div class="row">

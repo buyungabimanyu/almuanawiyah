@@ -27,6 +27,6 @@ class PpdbController extends Controller
 
         Ppdb::create($validatedData);
 
-        return redirect('/')->with('success', 'Terimakasih atas pendaftaran yang telah anda kirimkan!!!, bila ada yang ditanyaka bisa chat WhatsApp pada nomor di bawah');
+        return redirect('/')->with('success', 'Terimakasih atas pendaftaran yang telah anda kirimkan!!!. <br>Bila ada yang ditanyaka bisa chat WhatsApp pada nomor di contact.');
     }
 }

@@ -53,7 +53,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('information*') ? 'active' : '' }}" aria-current="page" href="{{ route('information.index') }}">
-              <span data-feather="users" class="align-text-bottom"></span>
+              <span data-feather="info" class="align-text-bottom"></span>
               Information
             </a>
           </li>

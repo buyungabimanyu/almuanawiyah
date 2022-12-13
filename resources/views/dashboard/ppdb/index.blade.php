@@ -28,7 +28,11 @@
             <td>{{ $data->asal_sekolah }}</td>
             <td>{{ $data->alamat }}</td>
             <td>{{ $data->email }}</td>
-            <td>{{ $data->no_tlp }}</td>
+            <td>
+              <a href="http://wa.me/{{ $data->no_tlp }}" target="_blank" rel="noopener noreferrer">
+                {{ $data->no_tlp }}
+              </a>
+            </td>
             <td>{{ $data->created_at }}</td>
           </tr>
           @endforeach

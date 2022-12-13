@@ -51,19 +51,10 @@
 					</div>
 				</div>
 				@if (session('success'))
-					<div class="modal-footer">
-						<p style="color: azure">{{ session('success') }}</p>
+					<div class="modal-footer" style="align-items:stretch; background:black">
+						<h5 style="color: azure; font-size: 16px; font-weight: 500; text-align:left">{!! session('success') !!}</h5>
 					</div>
 				@endif
-			</div>			
-		@else
-			<div style="position: relative; clear:both">
-				<div style="float: left">
-					<h4 style="color: azure">{{ session('success') }}</h4>
-				</div>
-				<div style="float: right">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-				</div>
 			</div>
 		@endif
 	</div>
